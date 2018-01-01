@@ -1,0 +1,17 @@
+^\.
+^MANIFEST\.SKIP$
+^MANIFEST\.bak$
+^Makefile$
+^Makefile\.old$
+^Build$
+^Build\.bat$
+^META\.
+^MYMETA\.
+^_build/
+^cover_db/
+^blib/
+^inc/
+^nytprof\.out$
+^pod2htm.*\.tmp$
+^pm_to_blib$
+^Test-BDD-Definitions-.*
