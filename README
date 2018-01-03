@@ -1,4 +1,4 @@
-Test-BDD-Definitions
+Test-BDD-Cucumber-Definitions
 
 The README is used to introduce the module and provide instructions on
 how to install the module, any machine dependencies it may have (for
@@ -26,21 +26,21 @@ SUPPORT AND DOCUMENTATION
 After installing, you can find documentation for this module with the
 perldoc command.
 
-    perldoc Test::BDD::Definitions
+    perldoc Test::BDD::Cucumber::Definitions
 
 You can also look for information at:
 
     RT, CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-BDD-Definitions
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-BDD-Cucumber-Definitions
 
     AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Test-BDD-Definitions
+        http://annocpan.org/dist/Test-BDD-Cucumber-Definitions
 
     CPAN Ratings
-        http://cpanratings.perl.org/d/Test-BDD-Definitions
+        http://cpanratings.perl.org/d/Test-BDD-Cucumber-Definitions
 
     Search CPAN
-        http://search.cpan.org/dist/Test-BDD-Definitions/
+        http://search.cpan.org/dist/Test-BDD-Cucumber-Definitions/
 
 
 LICENSE AND COPYRIGHT

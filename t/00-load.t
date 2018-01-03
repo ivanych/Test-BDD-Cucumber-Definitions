@@ -7,7 +7,7 @@ use Test::More;
 plan tests => 1;
 
 BEGIN {
-    use_ok( 'Test::BDD::Definitions' ) || print "Bail out!\n";
+    use_ok( 'Test::BDD::Cucumber::Definitions' ) || print "Bail out!\n";
 }
 
-diag( "Testing Test::BDD::Definitions $Test::BDD::Definitions::VERSION, Perl $], $^X" );
+diag( "Testing Test::BDD::Cucumber::Definitions $Test::BDD::Cucumber::Definitions::VERSION, Perl $], $^X" );

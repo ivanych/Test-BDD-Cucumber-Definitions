@@ -50,7 +50,7 @@ TODO: {
     "placeholder date/time"       => qr(Date/time)
   );
 
-  module_boilerplate_ok('lib/Test/BDD/Definitions.pm');
+  module_boilerplate_ok('lib/Test/BDD/Cucumber/Definitions.pm');
 
 
 }
