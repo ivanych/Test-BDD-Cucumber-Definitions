@@ -1,6 +1,5 @@
 Makefile
 Makefile.old
-MANIFEST.bak
 Build
 Build.bat
 META.*
@@ -12,6 +11,8 @@ blib/
 inc/
 .lwpcookies
 .last_cover_stats
+*.bak
+*.tdy
 nytprof.out
 pod2htm*.tmp
 pm_to_blib
