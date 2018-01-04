@@ -14,7 +14,7 @@ use Test::BDD::Cucumber::StepFile qw();
 use Test::More;
 use Try::Tiny;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 our @EXPORT_OK = qw(S C);
 
