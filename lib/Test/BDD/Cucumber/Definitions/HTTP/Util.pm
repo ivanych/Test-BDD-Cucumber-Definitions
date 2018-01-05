@@ -207,13 +207,23 @@ my $validator_content_decode = validation_for(
 sub content_decode {
     my ($format) = $validator_content_decode->(@_);
 
+    my $error;
+
     if ( $format eq 'JSON' ) {
         S->{http}->{response}->{decoded_content} = try {
             decode_json( S->{http}->{response}->{content} );
+        }
+        catch {
+            $error = "Could not decode content as JSON: $_[0]";
+
+            return;
         };
     }
 
-    ok( S->{http}->{response}->{decoded_content}, qq{Http response content decoded as "$format"} );
+    if ($error) {
+        fail(qq{Http response content decoded as "$format"});
+        diag($error);
+    }
 
     diag( 'Http response content = ' . np S->{http}->{response}->{content} );
 
