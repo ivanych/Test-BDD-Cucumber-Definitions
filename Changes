@@ -1,5 +1,9 @@
 Revision history for Test-BDD-Cucumber-Definitions
 
+0.03    2018-01-08
+        - Functions for working with data are transferred to the Data module
+        - Util modules export their functions
+
 0.01    Date/time
         First version, released on an unsuspecting world.
 

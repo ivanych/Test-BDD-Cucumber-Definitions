@@ -13,7 +13,7 @@ use Test::BDD::Cucumber::StepFile qw();
 use Test::More;
 use Try::Tiny;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 our @EXPORT_OK = qw(S C request_send code_eq header_re header_set content_re content_set);
 our %EXPORT_TAGS = ( util => [qw(request_send code_eq header_re header_set content_re content_set)] );
