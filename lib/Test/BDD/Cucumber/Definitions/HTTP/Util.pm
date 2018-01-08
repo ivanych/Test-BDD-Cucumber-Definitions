@@ -7,7 +7,6 @@ use Carp;
 use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use HTTP::Tiny;
-use JSON::XS;
 use Moose::Util::TypeConstraints;
 use Params::ValidationCompiler qw( validation_for );
 use Test::BDD::Cucumber::StepFile qw();
@@ -16,7 +15,8 @@ use Try::Tiny;
 
 our $VERSION = '0.02';
 
-our @EXPORT_OK = qw(S C);
+our @EXPORT_OK = qw(S C request_send code_eq header_re header_set content_re content_set);
+our %EXPORT_TAGS = ( util => [qw(request_send code_eq header_re header_set content_re content_set)] );
 
 ## no critic [Subroutines::RequireArgUnpacking]
 
@@ -192,40 +192,6 @@ sub content_re {
         qr/$content/,    ## no critic [RegularExpressions::RequireExtendedFormatting]
         qq{Http response content re "$content"}
     );
-
-    return;
-}
-
-my $validator_content_decode = validation_for(
-    params => [
-
-        # http response content format
-        { type => enum( [qw(JSON XML)] ) }
-    ]
-);
-
-sub content_decode {
-    my ($format) = $validator_content_decode->(@_);
-
-    my $error;
-
-    if ( $format eq 'JSON' ) {
-        S->{http}->{response}->{decoded_content} = try {
-            decode_json( S->{http}->{response}->{content} );
-        }
-        catch {
-            $error = "Could not decode content as JSON: $_[0]";
-
-            return;
-        };
-    }
-
-    if ($error) {
-        fail(qq{Http response content decoded as "$format"});
-        diag($error);
-    }
-
-    diag( 'Http response content = ' . np S->{http}->{response}->{content} );
 
     return;
 }
