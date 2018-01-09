@@ -1,7 +1,6 @@
 language: perl
-
-install:
-    - cpanm -v --installdeps --notest .
+perl:
+  - "5.16"
 
 notifications:
     email: false
