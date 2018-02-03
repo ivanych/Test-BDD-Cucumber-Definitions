@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use Carp;
+use Const::Fast;
 use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use Hash::MultiValue;
@@ -38,6 +39,10 @@ our %EXPORT_TAGS = (
 ## no critic [Subroutines::RequireArgUnpacking]
 
 my $http = HTTP::Tiny->new();
+
+# Exceptions will result in a pseudo-HTTP status code of 599 and a reason of "Internal Exception".
+# The content field in the response will contain the text of the exception.
+const my $HTTP_INTERNAL_EXCEPTION => 599;
 
 sub S { return Test::BDD::Cucumber::StepFile::S }
 sub C { return Test::BDD::Cucumber::StepFile::C }
@@ -118,9 +123,7 @@ sub request_send {
 
     S->{http}->{response} = $http->request( $method, $url, $options );
 
-    # Exceptions will result in a pseudo-HTTP status code of 599 and a reason of "Internal Exception".
-    # The content field in the response will contain the text of the exception.
-    if ( S->{http}->{response}->{status} == 599 ) {
+    if ( S->{http}->{response}->{status} == $HTTP_INTERNAL_EXCEPTION ) {
         fail(qq{Http request was sent});
         diag( S->{http}->{response}->{content} );
     }

@@ -18,6 +18,7 @@ WriteMakefile(
         'Test::More' => '0',
     },
     PREREQ_PM => {
+        'Const::Fast'                   => 0,
         'DDP'                           => 0,
         'Hash::MultiValue'              => 0,
         'HTTP::Response'                => 0,
