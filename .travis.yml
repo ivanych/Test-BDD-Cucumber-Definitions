@@ -1,6 +1,8 @@
 language: perl
 perl:
   - "5.16"
+  - "5.22"
+  - "5.26"
 
 notifications:
     email: false
