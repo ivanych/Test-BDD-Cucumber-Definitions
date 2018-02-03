@@ -16,15 +16,23 @@ use Try::Tiny;
 
 our $VERSION = '0.06';
 
-our @EXPORT_OK = qw(S C content_decode jsonpath_eq jsonpath_re);
-our %EXPORT_TAGS = ( util => [qw(content_decode jsonpath_eq jsonpath_re)] );
+our @EXPORT_OK = qw(S C
+    content_decode
+    jsonpath_eq jsonpath_re
+);
+our %EXPORT_TAGS = (
+    util => [
+        qw(
+            content_decode
+            jsonpath_eq jsonpath_re
+            )
+    ]
+);
 
 # Enable JSONPath Embedded Perl Expressions
 $JSON::Path::Safe = 0;    ## no critic (Variables::ProhibitPackageVars)
 
 ## no critic [Subroutines::RequireArgUnpacking]
-
-my $http = HTTP::Tiny->new();
 
 sub S { return Test::BDD::Cucumber::StepFile::S }
 sub C { return Test::BDD::Cucumber::StepFile::C }
@@ -45,9 +53,11 @@ sub content_decode {
 
     my $error;
 
+    my $decoded_content = S->{http}->{response_object}->decoded_content();
+
     if ( $format eq 'JSON' ) {
         S->{data}->{structure} = try {
-            decode_json( S->{http}->{response}->{content} );
+            decode_json($decoded_content);
         }
         catch {
             $error = "Could not decode http response content as JSON: $_[0]";
@@ -64,7 +74,7 @@ sub content_decode {
         pass(qq{Http response content was decoded as "$format"});
     }
 
-    diag( 'Http response content = ' . np S->{http}->{response}->{content} );
+    diag( 'Http response content = ' . np $decoded_content );
 
     return;
 }
