@@ -46,6 +46,13 @@ Then qr/http response header "(.+)" must be like "(.+)"/, sub {
     header_re( $name, $value );
 };
 
+# Check http response header
+Then qr/http response header "(.+)" must be "(.+)"/, sub {
+    my ( $name, $value ) = ( $1, $2 );
+
+    header_eq( $name, $value );
+};
+
 # Check http response content
 Then qr/http response content must be "(.+)"/, sub {
     my ($value) = ($1);
@@ -58,6 +65,18 @@ Then qr/http response content must be like "(.+)"/, sub {
     my ($value) = ($1);
 
     content_re($value);
+};
+
+Then qr/http response decoded content must be "(.+)"/, sub {
+    my ($value) = ($1);
+
+    content_eq_decoded($value);
+};
+
+Then qr/http response decoded content must be like "(.+)"/, sub {
+    my ($value) = ($1);
+
+    content_re_decoded($value);
 };
 
 1;
