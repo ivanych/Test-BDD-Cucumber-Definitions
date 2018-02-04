@@ -8,8 +8,9 @@ use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use JSON::Path 'jpath1';
 use JSON::XS;
-use Moose::Util::TypeConstraints;
+use Moose::Util::TypeConstraints qw(find_type_constraint);
 use Params::ValidationCompiler qw( validation_for );
+use Test::BDD::Cucumber::Definitions::TypeConstraints;
 use Test::BDD::Cucumber::StepFile qw();
 use Test::More;
 use Try::Tiny;
@@ -41,7 +42,7 @@ my $validator_content_decode = validation_for(
     params => [
 
         # http response content format
-        { type => enum( [qw(JSON XML)] ) }
+        { type => find_type_constraint('ValueString') }
     ]
 );
 
@@ -83,18 +84,10 @@ my $validator_jsonpath_eq = validation_for(
     params => [
 
         # data structure jsonpath
-        {   type => subtype(
-                as 'Str',
-                message {qq{"$_" is not a valid data structure jsonpath}}
-            ),
-        },
+        { type => find_type_constraint('ValueJsonpath') },
 
         # data structure value
-        {   type => subtype(
-                as 'Str',
-                message {qq{"$_" is not a valid data structure value}}
-            ),
-        },
+        { type => find_type_constraint('ValueString') },
     ]
 );
 
@@ -115,18 +108,10 @@ my $validator_jsonpath_re = validation_for(
     params => [
 
         # data structure jsonpath
-        {   type => subtype(
-                as 'Str',
-                message {qq{"$_" is not a valid data structure jsonpath}}
-            ),
-        },
+        { type => find_type_constraint('ValueJsonpath') },
 
         # data structure regexp
-        {   type => subtype(
-                as 'Str',
-                message {qq{"$_" is not a valid data structure regexp}}
-            ),
-        },
+        { type => find_type_constraint('ValueRegexp') },
     ]
 );
 
