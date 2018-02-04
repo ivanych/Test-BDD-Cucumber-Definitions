@@ -6,7 +6,7 @@ use warnings;
 use Test::BDD::Cucumber::StepFile qw(Given When Then);
 use Test::BDD::Cucumber::Definitions::HTTP::Util qw(C :util);
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]

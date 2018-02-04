@@ -6,7 +6,7 @@ use warnings;
 use Moose::Util::TypeConstraints;
 use Try::Tiny;
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 subtype(
     'ValueString',
