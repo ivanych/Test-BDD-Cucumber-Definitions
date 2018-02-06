@@ -25,7 +25,7 @@ WriteMakefile(
         'HTTP::Tiny'                    => 0,
         'JSON::Path'                    => 0,
         'JSON::XS'                      => 0,
-        'Moose::Util::TypeConstraints'  => 0,
+        'MooseX::Types'                 => 0,
         'Params::ValidationCompiler'    => 0,
         'Test::BDD::Cucumber'           => 0,
         'Try::Tiny'                     => 0,
