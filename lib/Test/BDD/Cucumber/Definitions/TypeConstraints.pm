@@ -18,7 +18,7 @@ use MooseX::Types::Moose qw(Str Int RegexpRef);
 
 use Try::Tiny;
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 subtype(
     ValueString,
