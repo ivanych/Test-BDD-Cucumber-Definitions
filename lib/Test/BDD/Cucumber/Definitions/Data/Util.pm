@@ -8,9 +8,8 @@ use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use JSON::Path 'jpath1';
 use JSON::XS;
-use Moose::Util::TypeConstraints qw(find_type_constraint);
 use Params::ValidationCompiler qw( validation_for );
-use Test::BDD::Cucumber::Definitions::TypeConstraints;
+use Test::BDD::Cucumber::Definitions::TypeConstraints qw(:all);
 use Test::BDD::Cucumber::StepFile qw();
 use Test::More;
 use Try::Tiny;
@@ -42,7 +41,7 @@ my $validator_content_decode = validation_for(
     params => [
 
         # http response content format
-        { type => find_type_constraint('ValueString') }
+        { type => ValueString }
     ]
 );
 
@@ -84,10 +83,10 @@ my $validator_jsonpath_eq = validation_for(
     params => [
 
         # data structure jsonpath
-        { type => find_type_constraint('ValueJsonpath') },
+        { type => ValueJsonpath },
 
         # data structure value
-        { type => find_type_constraint('ValueString') },
+        { type => ValueString },
     ]
 );
 
@@ -108,10 +107,10 @@ my $validator_jsonpath_re = validation_for(
     params => [
 
         # data structure jsonpath
-        { type => find_type_constraint('ValueJsonpath') },
+        { type => ValueJsonpath },
 
         # data structure regexp
-        { type => find_type_constraint('ValueRegexp') },
+        { type => ValueRegexp },
     ]
 );
 

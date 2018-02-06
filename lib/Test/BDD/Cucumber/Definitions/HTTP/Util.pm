@@ -10,9 +10,8 @@ use Exporter qw(import);
 use Hash::MultiValue;
 use HTTP::Response;
 use HTTP::Tiny;
-use Moose::Util::TypeConstraints qw(find_type_constraint);
 use Params::ValidationCompiler qw( validation_for );
-use Test::BDD::Cucumber::Definitions::TypeConstraints;
+use Test::BDD::Cucumber::Definitions::TypeConstraints qw(:all);
 use Test::BDD::Cucumber::StepFile qw();
 use Test::More;
 use Try::Tiny;
@@ -52,10 +51,10 @@ my $validator_header_set = validation_for(
     params => [
 
         # http request header name
-        { type => find_type_constraint('ValueString') },
+        { type => ValueString },
 
         # http request header value
-        { type => find_type_constraint('ValueString') },
+        { type => ValueString },
     ]
 );
 
@@ -71,7 +70,7 @@ my $validator_content_set = validation_for(
     params => [
 
         # http request content
-        { type => find_type_constraint('ValueString') },
+        { type => ValueString },
     ]
 );
 
@@ -87,10 +86,10 @@ my $validator_request_send = validation_for(
     params => [
 
         # http request method
-        { type => find_type_constraint('ValueString') },
+        { type => ValueString },
 
         # http request url
-        { type => find_type_constraint('ValueString') },
+        { type => ValueString },
     ]
 );
 
@@ -135,7 +134,7 @@ my $validator_code_eq = validation_for(
     params => [
 
         # http response code
-        { type => find_type_constraint('ValueInteger') },
+        { type => ValueInteger },
     ]
 );
 
@@ -153,10 +152,10 @@ my $validator_header_eq = validation_for(
     params => [
 
         # http response header name
-        { type => find_type_constraint('ValueString') },
+        { type => ValueString },
 
         # http response header value
-        { type => find_type_constraint('ValueString') },
+        { type => ValueString },
 
     ]
 );
@@ -175,10 +174,10 @@ my $validator_header_re = validation_for(
     params => [
 
         # http response header name
-        { type => find_type_constraint('ValueString') },
+        { type => ValueString },
 
         # http response header value
-        { type => find_type_constraint('ValueRegexp') }
+        { type => ValueRegexp }
     ]
 );
 
@@ -197,7 +196,7 @@ my $validator_content_eq = validation_for(
     params => [
 
         # http response content
-        { type => find_type_constraint('ValueString') },
+        { type => ValueString },
 
     ]
 );
@@ -225,7 +224,7 @@ my $validator_content_re = validation_for(
     params => [
 
         # http response content
-        { type => find_type_constraint('ValueRegexp') }
+        { type => ValueRegexp }
     ]
 );
 
