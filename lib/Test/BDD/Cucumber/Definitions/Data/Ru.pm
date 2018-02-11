@@ -11,6 +11,7 @@ our $VERSION = '0.11';
 
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]
+## no critic [RegularExpressions::ProhibitComplexRegexes]
 
 # http response content decode ""
 When qr/содержимое HTTP-ответа декодировано как "(.+)"/, sub {
