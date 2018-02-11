@@ -97,7 +97,6 @@ sub jsonpath_eq {
 
     is( $result, $value, qq{Data structure jsonpath "$jsonpath" eq "$value"} );
 
-    diag( 'Jsonpath result = ' . np $result);
     diag( 'Data structure = ' . np S->{data}->{structure} );
 
     return;
@@ -125,7 +124,6 @@ sub jsonpath_re {
         qq{Data structure jsonpath "$jsonpath" re "$regexp"}
     );
 
-    diag( 'Jsonpath result = ' . np $result);
     diag( 'Data structure = ' . np S->{data}->{structure} );
 
     return;
