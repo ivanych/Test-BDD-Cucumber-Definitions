@@ -12,19 +12,22 @@ our $VERSION = '0.11';
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]
 
-When qr/в HTTP-ответе содержится валидный "(.+)"/, sub {
+# http response content decode ""
+When qr/содержимое HTTP-ответа декодировано как "(.+)"/, sub {
     my ($format) = ($1);
 
     content_decode($format);
 };
 
-Then qr/элемент данных "(.+?)" имеет значение "(.+)"/, sub {
+# data structure jsonpath "" eq ""
+Then qr/элемент структуры данных "(.+?)" равен "(.+)"/, sub {
     my ( $jsonpath, $value ) = ( $1, $2 );
 
     jsonpath_eq( $jsonpath, $value );
 };
 
-Then qr/элемент данных "(.+?)" совпадает с "(.+)"/, sub {
+# data structure jsonpath "" re ""
+Then qr/элемент структуры данных "(.+?)" совпадает с "(.+)"/, sub {
     my ( $jsonpath, $value ) = ( $1, $2 );
 
     jsonpath_re( $jsonpath, $value );
