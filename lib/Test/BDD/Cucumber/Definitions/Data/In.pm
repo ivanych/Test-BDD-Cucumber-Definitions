@@ -11,20 +11,22 @@ our $VERSION = '0.11';
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]
 
-# Decode http response content
-When qr/http response content decode as "(.+)"/, sub {
+# http response content decode ""
+When qr/http response content decode "(.+)"/, sub {
     my ($format) = ($1);
 
     content_decode($format);
 };
 
-Then qr/data structure jsonpath "(.+?)" must be "(.+)"/, sub {
+# data structure jsonpath "" eq ""
+Then qr/data structure jsonpath "(.+?)" eq "(.+)"/, sub {
     my ( $jsonpath, $value ) = ( $1, $2 );
 
     jsonpath_eq( $jsonpath, $value );
 };
 
-Then qr/data structure jsonpath "(.+?)" must be like "(.+)"/, sub {
+# data structure jsonpath "" re ""
+Then qr/data structure jsonpath "(.+?)" re "(.+)"/, sub {
     my ( $jsonpath, $value ) = ( $1, $2 );
 
     jsonpath_re( $jsonpath, $value );
