@@ -67,16 +67,4 @@ Then qr/http response content must be like "(.+)"/, sub {
     content_re($value);
 };
 
-Then qr/http response decoded content must be "(.+)"/, sub {
-    my ($value) = ($1);
-
-    content_eq_decoded($value);
-};
-
-Then qr/http response decoded content must be like "(.+)"/, sub {
-    my ($value) = ($1);
-
-    content_re_decoded($value);
-};
-
 1;
