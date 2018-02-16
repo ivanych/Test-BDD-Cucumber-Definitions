@@ -49,7 +49,7 @@ Then qr/заголовок HTTP-ответа "(.+?)" равен "(.+)"/, sub {
 };
 
 # http response header "" re ""
-Then qr/заголовок HTTP-ответа "(.+)" совпадает с "(.+)"/, sub {
+Then qr/заголовок HTTP-ответа "(.+?)" совпадает с "(.+)"/, sub {
     my ( $name, $value ) = ( $1, $2 );
 
     header_re( $name, $value );
