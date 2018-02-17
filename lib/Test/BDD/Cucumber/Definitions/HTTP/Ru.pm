@@ -16,7 +16,7 @@ Test::BDD::Cucumber::Definitions::HTTP::Ru - Шаги на русском язы
 
 =cut
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]
