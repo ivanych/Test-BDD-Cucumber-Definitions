@@ -1,4 +1,4 @@
-package Test::BDD::Cucumber::Definitions::Data;
+package Test::BDD::Cucumber::Definitions::JSON;
 
 use strict;
 use warnings;
@@ -37,16 +37,7 @@ $JSON::Path::Safe = 0;    ## no critic (Variables::ProhibitPackageVars)
 sub S { return Test::BDD::Cucumber::StepFile::S }
 sub C { return Test::BDD::Cucumber::StepFile::C }
 
-my $validator_content_decode = validation_for(
-    params => [
-
-        # http response content format
-        { type => ValueString }
-    ]
-);
-
 sub content_decode {
-    my ($format) = $validator_content_decode->(@_);
 
     # Clean data structure
     S->{data}->{structure} = undef;
@@ -55,23 +46,21 @@ sub content_decode {
 
     my $decoded_content = S->{http}->{response_object}->decoded_content();
 
-    if ( $format eq 'JSON' ) {
-        S->{data}->{structure} = try {
-            decode_json($decoded_content);
-        }
-        catch {
-            $error = "Could not decode http response content as JSON: $_[0]";
-
-            return;
-        };
+    S->{data}->{structure} = try {
+        decode_json($decoded_content);
     }
+    catch {
+        $error = "Could not decode http response content as JSON: $_[0]";
+
+        return;
+    };
 
     if ($error) {
-        fail(qq{Http response content was decoded as "$format"});
+        fail(qq{Http response content was decoded as JSON});
         diag($error);
     }
     else {
-        pass(qq{Http response content was decoded as "$format"});
+        pass(qq{Http response content was decoded as JSON});
     }
 
     diag( 'Http response content = ' . np $decoded_content );
