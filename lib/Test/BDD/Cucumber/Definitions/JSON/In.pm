@@ -1,21 +1,19 @@
-package Test::BDD::Cucumber::Definitions::Data::In;
+package Test::BDD::Cucumber::Definitions::JSON::In;
 
 use strict;
 use warnings;
 
 use Test::BDD::Cucumber::StepFile qw(Given When Then);
-use Test::BDD::Cucumber::Definitions::Data qw(:util);
+use Test::BDD::Cucumber::Definitions::JSON qw(:util);
 
 our $VERSION = '0.12';
 
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]
 
-# http response content decode ""
-When qr/http response content decode "(.+)"/, sub {
-    my ($format) = ($1);
-
-    content_decode($format);
+# http response content decode JSON
+When qr/http response content decode JSON/, sub {
+    content_decode();
 };
 
 # data structure jsonpath "" eq ""
