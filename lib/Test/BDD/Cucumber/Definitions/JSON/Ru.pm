@@ -11,8 +11,8 @@ use Test::BDD::Cucumber::Definitions::JSON qw(:util);
 
 =head1 NAME
 
-Test::BDD::Cucumber::Definitions::JSON::Ru - Шаги на русском языке для работы
-с данными в формате JSON
+Test::BDD::Cucumber::Definitions::JSON::Ru - Шаги на русском языке
+для работы с данными в формате JSON
 
 =cut
 
@@ -39,26 +39,18 @@ our $VERSION = '0.13';
 В файле B<features/json.feature>:
 
     Feature: JSON (Ru)
-        Проверка данных в форматe JSON
+        Работа с данными в форматe JSON
 
     Scenario: HTML->JSON
         When HTTP-запрос "GET" отправлен на "https://fastapi.metacpan.org/v1/distribution/Test-BDD-Cucumber-Definitions"
         When содержимое HTTP-ответа декодировано как "JSON"
-        Then элемент структуры данных "$.name" совпадает с "Test-BDD-Cucumber-Definitions"
 
 =head1 ИСТОЧНИКИ ДАННЫХ
 
 Данные в формате JSON могут быть прочитаны из различных источников.
 
-Некоторые источники (например, файлы) могут быть прочитаны встроенными
-средствами модуля, а для некоторых источников (например, HTTP) требуется
-совместное использование вместе с другими модулями.
-
-=over 4
-
-=item B<HTTP> - Данные из HTTP-ответа, полученного с помощью модуля L<Test::BDD::Cucumber::Definitions::HTTP::Ru>
-
-=back
+Для работы с источниками требуется использование модуля JSON совместно с другими
+модулями, например HTTP.
 
 =head1 ШАГИ
 
@@ -66,7 +58,7 @@ our $VERSION = '0.13';
 
 =pod
 
-Прочитать данные из HTTP-ответа:
+Прочитать данные из HTTP-ответа в структуру:
 
     When содержимое HTTP-ответа декодировано как JSON
 
@@ -75,41 +67,6 @@ our $VERSION = '0.13';
 # http response content decode JSON
 When qr/содержимое HTTP-ответа декодировано как JSON/, sub {
     content_decode();
-};
-
-=head2 Проверка данных
-
-Для обращения к произвольным элементам структуры данных используется
-L<JSON::Path>.
-
-=pod
-
-Проверить элемент на точное соответствие значению:
-
-    Then элемент структуры данных "$.status" равен "success"
-
-=cut
-
-# data structure jsonpath "" eq ""
-Then qr/элемент структуры данных "(.+?)" равен "(.+)"/, sub {
-    my ( $jsonpath, $value ) = ( $1, $2 );
-
-    jsonpath_eq( $jsonpath, $value );
-};
-
-=pod
-
-Проверить элемент на совпадение с регулярным выражением:
-
-    Then элемент структуры данных "$.name" совпадает с "Test-*"
-
-=cut
-
-# data structure jsonpath "" re ""
-Then qr/элемент структуры данных "(.+?)" совпадает с "(.+)"/, sub {
-    my ( $jsonpath, $value ) = ( $1, $2 );
-
-    jsonpath_re( $jsonpath, $value );
 };
 
 1;
