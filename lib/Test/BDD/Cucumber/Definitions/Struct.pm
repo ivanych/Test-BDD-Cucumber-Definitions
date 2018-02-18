@@ -12,7 +12,7 @@ use Test::BDD::Cucumber::Definitions::TypeConstraints qw(:all);
 use Test::BDD::Cucumber::StepFile qw();
 use Test::More;
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 our @EXPORT_OK = qw(S C
     jsonpath_eq jsonpath_re

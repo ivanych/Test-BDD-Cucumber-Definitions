@@ -1,5 +1,12 @@
 Revision history for Test-BDD-Cucumber-Definitions
 
+0.14    2018-02-18
+        [ JSON ]
+        - Module JSON is divided into two separate modules JSON and Struct
+
+        [ Struct ]
+        - Module was added
+
 0.13    2018-02-18
         [ HTTP ]
         - The steps in the HTTP::In module have been renamed

@@ -6,7 +6,7 @@ use warnings;
 use Test::BDD::Cucumber::StepFile qw(Given When Then);
 use Test::BDD::Cucumber::Definitions::JSON qw(:util);
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]
