@@ -3,8 +3,8 @@ package Test::BDD::Cucumber::Definitions::HTTP::In;
 use strict;
 use warnings;
 
-use Test::BDD::Cucumber::StepFile qw(Given When Then);
-use Test::BDD::Cucumber::Definitions::HTTP qw(C :util);
+use Test::BDD::Cucumber::Definitions qw(C Given When Then);
+use Test::BDD::Cucumber::Definitions::HTTP qw(:util);
 
 our $VERSION = '0.14';
 

@@ -8,13 +8,13 @@ use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use JSON::Path 'jpath1';
 use Params::ValidationCompiler qw( validation_for );
+use Test::BDD::Cucumber::Definitions qw(S);
 use Test::BDD::Cucumber::Definitions::TypeConstraints qw(:all);
-use Test::BDD::Cucumber::StepFile qw();
 use Test::More;
 
 our $VERSION = '0.14';
 
-our @EXPORT_OK = qw(S C
+our @EXPORT_OK = qw(
     jsonpath_eq jsonpath_re
 );
 our %EXPORT_TAGS = (
@@ -29,9 +29,6 @@ our %EXPORT_TAGS = (
 $JSON::Path::Safe = 0;    ## no critic (Variables::ProhibitPackageVars)
 
 ## no critic [Subroutines::RequireArgUnpacking]
-
-sub S { return Test::BDD::Cucumber::StepFile::S }
-sub C { return Test::BDD::Cucumber::StepFile::C }
 
 my $validator_jsonpath_eq = validation_for(
     params => [

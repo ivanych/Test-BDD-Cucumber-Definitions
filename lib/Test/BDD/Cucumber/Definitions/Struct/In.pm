@@ -3,7 +3,7 @@ package Test::BDD::Cucumber::Definitions::Struct::In;
 use strict;
 use warnings;
 
-use Test::BDD::Cucumber::StepFile qw(Given When Then);
+use Test::BDD::Cucumber::Definitions qw(Given When Then);
 use Test::BDD::Cucumber::Definitions::Struct qw(:util);
 
 our $VERSION = '0.14';

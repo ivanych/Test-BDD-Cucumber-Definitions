@@ -8,14 +8,14 @@ use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use JSON::XS;
 use Params::ValidationCompiler qw( validation_for );
+use Test::BDD::Cucumber::Definitions qw(S);
 use Test::BDD::Cucumber::Definitions::TypeConstraints qw(:all);
-use Test::BDD::Cucumber::StepFile qw();
 use Test::More;
 use Try::Tiny;
 
 our $VERSION = '0.14';
 
-our @EXPORT_OK = qw(S C
+our @EXPORT_OK = qw(
     content_decode
 );
 our %EXPORT_TAGS = (
@@ -27,9 +27,6 @@ our %EXPORT_TAGS = (
 );
 
 ## no critic [Subroutines::RequireArgUnpacking]
-
-sub S { return Test::BDD::Cucumber::StepFile::S }
-sub C { return Test::BDD::Cucumber::StepFile::C }
 
 sub content_decode {
 

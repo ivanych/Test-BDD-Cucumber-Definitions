@@ -3,7 +3,7 @@ package Test::BDD::Cucumber::Definitions::JSON::In;
 use strict;
 use warnings;
 
-use Test::BDD::Cucumber::StepFile qw(Given When Then);
+use Test::BDD::Cucumber::Definitions qw(Given When Then);
 use Test::BDD::Cucumber::Definitions::JSON qw(:util);
 
 our $VERSION = '0.14';

@@ -11,15 +11,14 @@ use Hash::MultiValue;
 use HTTP::Response;
 use HTTP::Tiny;
 use Params::ValidationCompiler qw( validation_for );
+use Test::BDD::Cucumber::Definitions qw(S);
 use Test::BDD::Cucumber::Definitions::TypeConstraints qw(:all);
-use Test::BDD::Cucumber::StepFile qw();
 use Test::More;
 use Try::Tiny;
 
 our $VERSION = '0.14';
 
 our @EXPORT_OK = qw(
-    S C
     request_send
     code_eq
     header_set header_eq header_re
@@ -43,9 +42,6 @@ my $http = HTTP::Tiny->new();
 const my $HTTP_INTERNAL_EXCEPTION => 599;
 
 ## no critic [Subroutines::RequireArgUnpacking]
-
-sub S { return Test::BDD::Cucumber::StepFile::S }
-sub C { return Test::BDD::Cucumber::StepFile::C }
 
 my $validator_header_set = validation_for(
     params => [
