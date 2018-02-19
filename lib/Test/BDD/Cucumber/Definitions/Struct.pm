@@ -7,7 +7,7 @@ use Carp;
 use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use JSON::Path 'jpath1';
-use Params::ValidationCompiler qw( validation_for );
+use Params::ValidationCompiler qw(validation_for);
 use Test::BDD::Cucumber::Definitions qw(S);
 use Test::BDD::Cucumber::Definitions::TypeConstraints qw(:all);
 use Test::More;
@@ -44,11 +44,11 @@ my $validator_jsonpath_eq = validation_for(
 sub jsonpath_eq {
     my ( $jsonpath, $value ) = $validator_jsonpath_eq->(@_);
 
-    my $result = jpath1( S->{data}->{structure}, $jsonpath );
+    my $result = jpath1( S->{struct}->{data}, $jsonpath );
 
     is( $result, $value, qq{Data structure jsonpath "$jsonpath" eq "$value"} );
 
-    diag( 'Data structure = ' . np S->{data}->{structure} );
+    diag( 'Data structure = ' . np S->{struct}->{data} );
 
     return;
 }
@@ -67,7 +67,7 @@ my $validator_jsonpath_re = validation_for(
 sub jsonpath_re {
     my ( $jsonpath, $regexp ) = $validator_jsonpath_re->(@_);
 
-    my $result = jpath1( S->{data}->{structure}, $jsonpath );
+    my $result = jpath1( S->{struct}->{data}, $jsonpath );
 
     like(
         $result,
@@ -75,7 +75,7 @@ sub jsonpath_re {
         qq{Data structure jsonpath "$jsonpath" re "$regexp"}
     );
 
-    diag( 'Data structure = ' . np S->{data}->{structure} );
+    diag( 'Data structure = ' . np S->{struct}->{data} );
 
     return;
 }

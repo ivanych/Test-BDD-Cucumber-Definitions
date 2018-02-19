@@ -7,7 +7,7 @@ use Carp;
 use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use JSON::XS;
-use Params::ValidationCompiler qw( validation_for );
+use Params::ValidationCompiler qw(validation_for);
 use Test::BDD::Cucumber::Definitions qw(S);
 use Test::BDD::Cucumber::Definitions::TypeConstraints qw(:all);
 use Test::More;
@@ -31,13 +31,13 @@ our %EXPORT_TAGS = (
 sub content_decode {
 
     # Clean data structure
-    S->{data}->{structure} = undef;
+    S->{struct}->{data} = undef;
 
     my $error;
 
     my $decoded_content = S->{http}->{response_object}->decoded_content();
 
-    S->{data}->{structure} = try {
+    S->{struct}->{data} = try {
         decode_json($decoded_content);
     }
     catch {

@@ -6,6 +6,7 @@ use utf8;
 
 use Test::BDD::Cucumber::Definitions qw(Given When Then);
 use Test::BDD::Cucumber::Definitions::JSON qw(:util);
+
 =encoding utf8
 
 =head1 NAME
