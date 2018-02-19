@@ -1,5 +1,12 @@
 Revision history for Test-BDD-Cucumber-Definitions
 
+0.15    2018-02-19
+        [ Definitions ]
+        - Functions S, C, Given, When and Then are exported from the module Definitions
+
+        [ Struct ]
+        - The Struct module stores the data in S->{struct}->{data}
+
 0.14    2018-02-18
         [ JSON ]
         - Module JSON is divided into two separate modules JSON and Struct
