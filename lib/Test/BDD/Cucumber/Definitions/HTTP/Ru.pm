@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use utf8;
 
-use Test::BDD::Cucumber::Definitions qw(Given When Then);
+use Test::BDD::Cucumber::Definitions qw(C Given When Then);
 use Test::BDD::Cucumber::Definitions::HTTP qw(:util);
 
 =encoding utf8
