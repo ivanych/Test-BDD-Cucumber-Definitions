@@ -13,7 +13,7 @@ use Test::BDD::Cucumber::Definitions::TypeConstraints qw(:all);
 use Test::More;
 use Try::Tiny;
 
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 our @EXPORT_OK = qw(
     content_decode

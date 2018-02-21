@@ -1,5 +1,9 @@
 Revision history for Test-BDD-Cucumber-Definitions
 
+0.16    2018-02-21
+        [ HTTP ]
+        - Accidentally forgotten import function C was added
+
 0.15    2018-02-19
         [ Definitions ]
         - Functions S, C, Given, When and Then are exported from the module Definitions
