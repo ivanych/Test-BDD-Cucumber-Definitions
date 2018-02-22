@@ -1,5 +1,12 @@
 Revision history for Test-BDD-Cucumber-Definitions
 
+0.17    2018-02-23
+        [ HTTP ]
+        - URL of the http request can use environment variables
+
+        [ JSON ]
+        - POD fixed
+
 0.16    2018-02-21
         [ HTTP ]
         - Accidentally forgotten import function C was added
