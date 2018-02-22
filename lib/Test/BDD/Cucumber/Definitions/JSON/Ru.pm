@@ -58,7 +58,8 @@ our $VERSION = '0.16';
 
 =pod
 
-Прочитать данные из HTTP-ответа в структуру:
+Прочитать данные из L<HTTP-ответа|Test::BDD::Cucumber::Definitions::HTTP::Ru>
+в L<структуру|Test::BDD::Cucumber::Definitions::Struct::Ru>:
 
     When содержимое HTTP-ответа декодировано как JSON
 
