@@ -9,6 +9,7 @@ use MooseX::Types (
             ValueString
             ValueInteger
             ValueRegexp
+            ValueUrl
             ValueJsonpath
             )
     ]
@@ -52,6 +53,31 @@ coerce(
 
         try {
             qr/$value/;    ## no critic [RegularExpressions::RequireExtendedFormatting]
+        }
+        catch {
+            return $value;
+        }
+    }
+);
+
+subtype(
+    ValueUrl,
+    as Str,
+    message {
+        "$_ is not a valid URL"
+    }
+);
+
+coerce(
+    ValueUrl,
+    from Str,
+    via {
+        my $value = $_;
+
+        try {
+            $value =~ s/\$\{ (.+?) \}/$ENV{$1} || ''/gxe;
+
+            return $value;
         }
         catch {
             return $value;

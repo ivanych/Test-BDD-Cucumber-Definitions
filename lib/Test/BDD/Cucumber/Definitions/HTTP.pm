@@ -85,16 +85,12 @@ my $validator_request_send = validation_for(
         { type => ValueString },
 
         # http request url
-        { type => ValueString },
+        { type => ValueUrl },
     ]
 );
 
 sub request_send {
     my ( $method, $url ) = $validator_request_send->(@_);
-
-    if ( $ENV{BDD_HTTP_HOST} ) {
-        $url =~ s/\$BDD_HTTP_HOST/$ENV{BDD_HTTP_HOST}/x;
-    }
 
     my $options = {
         headers => S->{http}->{request}->{headers},
