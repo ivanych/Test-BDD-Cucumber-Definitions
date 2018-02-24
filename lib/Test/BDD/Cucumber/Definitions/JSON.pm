@@ -9,7 +9,6 @@ use Exporter qw(import);
 use JSON::XS;
 use Params::ValidationCompiler qw(validation_for);
 use Test::BDD::Cucumber::Definitions qw(S);
-use Test::BDD::Cucumber::Definitions::TypeConstraints qw(:all);
 use Test::More;
 use Try::Tiny;
 

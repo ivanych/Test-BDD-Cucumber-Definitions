@@ -9,7 +9,7 @@ use Exporter qw(import);
 use JSON::Path 'jpath1';
 use Params::ValidationCompiler qw(validation_for);
 use Test::BDD::Cucumber::Definitions qw(S);
-use Test::BDD::Cucumber::Definitions::TypeConstraints qw(:all);
+use Test::BDD::Cucumber::Definitions::Struct::Types qw(:all);
 use Test::More;
 
 our $VERSION = '0.17';
@@ -34,10 +34,10 @@ my $validator_jsonpath_eq = validation_for(
     params => [
 
         # data structure jsonpath
-        { type => ValueJsonpath },
+        { type => StructJsonpath },
 
         # data structure value
-        { type => ValueString },
+        { type => StructString },
     ]
 );
 
@@ -57,10 +57,10 @@ my $validator_jsonpath_re = validation_for(
     params => [
 
         # data structure jsonpath
-        { type => ValueJsonpath },
+        { type => StructJsonpath },
 
         # data structure regexp
-        { type => ValueRegexp },
+        { type => StructRegexp },
     ]
 );
 
