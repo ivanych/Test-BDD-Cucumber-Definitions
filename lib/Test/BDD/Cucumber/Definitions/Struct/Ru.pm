@@ -69,8 +69,8 @@ L<JSON::Path>.
 
 =cut
 
-# data structure jsonpath "" eq ""
-Then qr/элемент структуры данных "(.+?)" равен "(.+)"/, sub {
+# struct data element "" eq ""
+Then qr/элемент структуры данных "(.+?)" равен "(.*)"/, sub {
     my ( $jsonpath, $value ) = ( $1, $2 );
 
     jsonpath_eq( $jsonpath, $value );
@@ -84,7 +84,7 @@ Then qr/элемент структуры данных "(.+?)" равен "(.+)"
 
 =cut
 
-# data structure jsonpath "" re ""
+# struct data element "" re ""
 Then qr/элемент структуры данных "(.+?)" совпадает с "(.+)"/, sub {
     my ( $jsonpath, $value ) = ( $1, $2 );
 

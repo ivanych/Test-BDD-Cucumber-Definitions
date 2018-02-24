@@ -11,15 +11,15 @@ our $VERSION = '0.17';
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]
 
-# data structure jsonpath "" eq ""
-Then qr/data structure jsonpath "(.+?)" eq "(.+)"/, sub {
+# struct data element "" eq ""
+Then qr/struct data element "(.+?)" eq "(.*)"/, sub {
     my ( $jsonpath, $value ) = ( $1, $2 );
 
     jsonpath_eq( $jsonpath, $value );
 };
 
-# data structure jsonpath "" re ""
-Then qr/data structure jsonpath "(.+?)" re "(.+)"/, sub {
+# struct data element "" re ""
+Then qr/struct data element "(.+?)" re "(.+)"/, sub {
     my ( $jsonpath, $value ) = ( $1, $2 );
 
     jsonpath_re( $jsonpath, $value );
