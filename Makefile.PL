@@ -26,6 +26,7 @@ WriteMakefile(
         'JSON::Path'                    => 0,
         'JSON::XS'                      => 0,
         'MooseX::Types'                 => 0,
+        'MooseX::Types::Common'         => 0,
         'Params::ValidationCompiler'    => '0.22',
         'Test::BDD::Cucumber'           => 0,
         'Try::Tiny'                     => 0,
