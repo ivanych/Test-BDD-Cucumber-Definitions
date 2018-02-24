@@ -20,7 +20,7 @@ use MooseX::Types (
     ]
 );
 
-our $VERSION = '0.17';
+our $VERSION = '0.18';
 
 subtype(
     HttpHeader,

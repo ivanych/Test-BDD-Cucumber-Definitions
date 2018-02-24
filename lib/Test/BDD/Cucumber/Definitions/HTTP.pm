@@ -16,7 +16,7 @@ use Test::BDD::Cucumber::Definitions::HTTP::Types qw(:all);
 use Test::More;
 use Try::Tiny;
 
-our $VERSION = '0.17';
+our $VERSION = '0.18';
 
 our @EXPORT_OK = qw(
     request_send

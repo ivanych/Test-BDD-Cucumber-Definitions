@@ -1,5 +1,16 @@
 Revision history for Test-BDD-Cucumber-Definitions
 
+0.18    2018-02-24
+        [ All ]
+        - Requirement MooseX::Types::Common was added
+        - Module TypeConstraints is removed. The HTTP and Struct modules have their own types.
+
+        [ HTTP ]
+        - Steps was edited
+
+        [ Struct ]
+        - Steps was edited
+
 0.17    2018-02-23
         [ HTTP ]
         - URL of the http request can use environment variables
