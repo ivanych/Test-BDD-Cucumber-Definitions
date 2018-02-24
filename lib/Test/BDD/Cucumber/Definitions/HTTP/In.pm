@@ -12,7 +12,7 @@ our $VERSION = '0.17';
 ## no critic [RegularExpressions::RequireExtendedFormatting]
 
 # http request header "" set ""
-When qr/http request header "(.+?)" set "(.+)"/, sub {
+When qr/http request header "(.+?)" set "(.*)"/, sub {
     my ( $header, $value ) = ( $1, $2 );
 
     header_set( $header, $value );
@@ -40,7 +40,7 @@ Then qr/http response code eq "(.+)"/, sub {
 };
 
 # http response header "" eq ""
-Then qr/http response header "(.+?)" eq "(.+)"/, sub {
+Then qr/http response header "(.+?)" eq "(.*)"/, sub {
     my ( $name, $value ) = ( $1, $2 );
 
     header_eq( $name, $value );
@@ -54,7 +54,7 @@ Then qr/http response header "(.+?)" re "(.+)"/, sub {
 };
 
 # http response content eq ""
-Then qr/http response content eq "(.+)"/, sub {
+Then qr/http response content eq "(.*)"/, sub {
     my ($value) = ($1);
 
     content_eq($value);

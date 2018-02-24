@@ -57,7 +57,7 @@ our $VERSION = '0.17';
 =cut
 
 # http request header "" set ""
-When qr/заголовок HTTP-запроса "(.+?)" установлен в значение "(.+)"/, sub {
+When qr/заголовок HTTP-запроса "(.+?)" установлен в значение "(.*)"/, sub {
     my ( $header, $value ) = ( $1, $2 );
 
     header_set( $header, $value );
@@ -128,7 +128,7 @@ Then qr/код HTTP-ответа равен "(.+)"/, sub {
 =cut
 
 # http response header "" eq ""
-Then qr/заголовок HTTP-ответа "(.+?)" равен "(.+)"/, sub {
+Then qr/заголовок HTTP-ответа "(.+?)" равен "(.*)"/, sub {
     my ( $name, $value ) = ( $1, $2 );
 
     header_eq( $name, $value );
@@ -158,7 +158,7 @@ Then qr/заголовок HTTP-ответа "(.+?)" совпадает с "(.+)
 =cut
 
 # http response content eq ""
-Then qr/содержимое HTTP-ответа равно "(.+)"/, sub {
+Then qr/содержимое HTTP-ответа равно "(.*)"/, sub {
     my ($value) = ($1);
 
     content_eq($value);
