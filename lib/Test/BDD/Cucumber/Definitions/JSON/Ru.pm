@@ -43,7 +43,7 @@ our $VERSION = '0.18';
 
     Scenario: HTML->JSON
         When HTTP-запрос "GET" отправлен на "https://fastapi.metacpan.org/v1/distribution/Test-BDD-Cucumber-Definitions"
-        When содержимое HTTP-ответа декодировано как "JSON"
+        When содержимое HTTP-ответа декодировано как JSON
 
 =head1 ИСТОЧНИКИ ДАННЫХ
 
