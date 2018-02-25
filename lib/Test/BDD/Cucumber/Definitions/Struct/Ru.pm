@@ -34,7 +34,6 @@ our $VERSION = '0.18';
     use open qw(:std :utf8);
 
     use Test::BDD::Cucumber::Definitions::HTTP::Ru;
-    use Test::BDD::Cucumber::Definitions::JSON::Ru;
     use Test::BDD::Cucumber::Definitions::Struct::Ru;
 
 В файле B<features/struct.feature>:
@@ -42,19 +41,35 @@ our $VERSION = '0.18';
     Feature: Struct (Ru)
         Работа perl-структурами данных
 
-    Scenario: HTML->JSON->Struct
+    Scenario: HTTP->JSON->Struct
         When HTTP-запрос "GET" отправлен на "https://fastapi.metacpan.org/v1/distribution/Test-BDD-Cucumber-Definitions"
-        When содержимое HTTP-ответа декодировано как JSON
+        When содержимое HTTP-ответа прочитано как JSON
         Then элемент структуры данных "$.name" совпадает с "Test-BDD-Cucumber-Definitions"
 
 =head1 ИСТОЧНИКИ ДАННЫХ
 
 Данные могут быть загружены в структуру из различных источников данных.
 
-Для работы с источниками требуется использование модуля Struct совместно с другими
-модулями, например HTTP и JSON.
+Для работы с источниками требуется использование модуля Struct
+совместно с другими модулями, например HTTP.
 
 =head1 ШАГИ
+
+=head2 Чтение данных
+
+=pod
+
+Прочитать данные из L<HTTP-ответа|Test::BDD::Cucumber::Definitions::HTTP::Ru>
+в L<perl-структуру|Test::BDD::Cucumber::Definitions::Struct::Ru>:
+
+    When содержимое HTTP-ответа прочитано как JSON
+
+=cut
+
+# http response content read JSON
+When qr/содержимое HTTP-ответа прочитано как JSON/, sub {
+    read_content();
+};
 
 =head2 Проверка данных
 

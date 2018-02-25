@@ -11,6 +11,11 @@ our $VERSION = '0.18';
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]
 
+# http response content read JSON
+When qr/http response content read JSON/, sub {
+    read_content();
+};
+
 # struct data element "" eq ""
 Then qr/struct data element "(.+?)" eq "(.*)"/, sub {
     my ( $jsonpath, $value ) = ( $1, $2 );
