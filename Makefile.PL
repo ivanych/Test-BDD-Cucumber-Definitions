@@ -18,11 +18,13 @@ WriteMakefile(
         'Test::More' => '0',
     },
     PREREQ_PM => {
+        'Archive::Zip'                  => 0,
         'Const::Fast'                   => 0,
         'DDP'                           => 0,
         'Hash::MultiValue'              => 0,
         'HTTP::Response'                => 0,
         'HTTP::Tiny'                    => 0,
+        'IO::String'                    => 0,
         'JSON::Path'                    => 0,
         'JSON::XS'                      => 0,
         'MooseX::Types'                 => 0,
