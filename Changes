@@ -1,5 +1,16 @@
 Revision history for Test-BDD-Cucumber-Definitions
 
+0.19    2018-02-25
+        [ Zip ]
+        - Steps to work with Zip archives are added
+        - Requirements Archive::Zip, IO::String has been added
+
+        [ Struct ]
+        - The function for reading data in the JSON format has been moved from the JSON module to the Struct module
+
+        [ JSON ]
+        - The JSON module has been removed
+
 0.18    2018-02-24
         [ All ]
         - Requirement MooseX::Types::Common was added
