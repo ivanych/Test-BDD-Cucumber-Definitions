@@ -4,10 +4,11 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 10;
+plan tests => 11;
 
 BEGIN {
     use_ok('Test::BDD::Cucumber::Definitions')             || print "Bail out!\n";
+    use_ok('Test::BDD::Cucumber::Definitions::Types')      || print "Bail out!\n";
     use_ok('Test::BDD::Cucumber::Definitions::HTTP')       || print "Bail out!\n";
     use_ok('Test::BDD::Cucumber::Definitions::HTTP::In')   || print "Bail out!\n";
     use_ok('Test::BDD::Cucumber::Definitions::HTTP::Ru')   || print "Bail out!\n";
