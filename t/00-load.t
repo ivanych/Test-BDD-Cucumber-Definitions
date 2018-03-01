@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 11;
+plan tests => 14;
 
 BEGIN {
     use_ok('Test::BDD::Cucumber::Definitions')             || print "Bail out!\n";
@@ -15,6 +15,9 @@ BEGIN {
     use_ok('Test::BDD::Cucumber::Definitions::Struct')     || print "Bail out!\n";
     use_ok('Test::BDD::Cucumber::Definitions::Struct::In') || print "Bail out!\n";
     use_ok('Test::BDD::Cucumber::Definitions::Struct::Ru') || print "Bail out!\n";
+    use_ok('Test::BDD::Cucumber::Definitions::Var')        || print "Bail out!\n";
+    use_ok('Test::BDD::Cucumber::Definitions::Var::In')    || print "Bail out!\n";
+    use_ok('Test::BDD::Cucumber::Definitions::Var::Ru')    || print "Bail out!\n";
     use_ok('Test::BDD::Cucumber::Definitions::Zip')        || print "Bail out!\n";
     use_ok('Test::BDD::Cucumber::Definitions::Zip::In')    || print "Bail out!\n";
     use_ok('Test::BDD::Cucumber::Definitions::Zip::Ru')    || print "Bail out!\n";
