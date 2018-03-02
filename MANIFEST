@@ -3,11 +3,9 @@ lib/Test/BDD/Cucumber/Definitions.pm
 lib/Test/BDD/Cucumber/Definitions/HTTP.pm
 lib/Test/BDD/Cucumber/Definitions/HTTP/In.pm
 lib/Test/BDD/Cucumber/Definitions/HTTP/Ru.pm
-lib/Test/BDD/Cucumber/Definitions/HTTP/Types.pm
 lib/Test/BDD/Cucumber/Definitions/Struct.pm
 lib/Test/BDD/Cucumber/Definitions/Struct/In.pm
 lib/Test/BDD/Cucumber/Definitions/Struct/Ru.pm
-lib/Test/BDD/Cucumber/Definitions/Struct/Types.pm
 lib/Test/BDD/Cucumber/Definitions/Types.pm
 lib/Test/BDD/Cucumber/Definitions/Var.pm
 lib/Test/BDD/Cucumber/Definitions/Var/In.pm
