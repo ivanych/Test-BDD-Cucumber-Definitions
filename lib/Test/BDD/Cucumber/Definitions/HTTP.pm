@@ -13,7 +13,6 @@ use HTTP::Tiny;
 use Params::ValidationCompiler qw(validation_for);
 use Test::BDD::Cucumber::Definitions qw(S);
 use Test::BDD::Cucumber::Definitions::Types qw(:all);
-use Test::BDD::Cucumber::Definitions::HTTP::Types qw(:all);
 use Test::More;
 use Try::Tiny;
 
@@ -48,7 +47,7 @@ my $validator_header_set = validation_for(
     params => [
 
         # http request header name
-        { type => HttpHeader },
+        { type => TbcdNonEmptyStr },
 
         # http request header value
         { type => TbcdStr }
@@ -66,7 +65,7 @@ sub header_set {
 my $validator_content_set = validation_for(
     params => [
 
-        # http request content
+        # http request content value
         { type => TbcdStr },
     ]
 );
@@ -82,11 +81,11 @@ sub content_set {
 my $validator_request_send = validation_for(
     params => [
 
-        # http request method
-        { type => HttpMethod },
+        # http request method value
+        { type => TbcdNonEmptyStr },
 
-        # http request url
-        { type => HttpUrl },
+        # http request url value
+        { type => TbcdNonEmptyStr },
     ]
 );
 
@@ -126,8 +125,8 @@ sub request_send {
 my $validator_code_eq = validation_for(
     params => [
 
-        # http response code
-        { type => HttpCode },
+        # http response code value
+        { type => TbcdInt },
     ]
 );
 
@@ -145,7 +144,7 @@ my $validator_header_eq = validation_for(
     params => [
 
         # http response header name
-        { type => HttpHeader },
+        { type => TbcdNonEmptyStr },
 
         # http response header value
         { type => TbcdStr },
@@ -167,9 +166,9 @@ my $validator_header_re = validation_for(
     params => [
 
         # http response header name
-        { type => HttpHeader },
+        { type => TbcdNonEmptyStr },
 
-        # http response header value
+        # http response header regexp
         { type => TbcdRegexpRef }
     ]
 );
@@ -188,7 +187,7 @@ sub header_re {
 my $validator_content_eq = validation_for(
     params => [
 
-        # http response content
+        # http response content value
         { type => TbcdStr },
 
     ]
@@ -207,7 +206,7 @@ sub content_eq {
 my $validator_content_re = validation_for(
     params => [
 
-        # http response content
+        # http response content regexp
         { type => TbcdRegexpRef }
     ]
 );

@@ -10,7 +10,7 @@ use JSON::Path 'jpath1';
 use JSON::XS;
 use Params::ValidationCompiler qw(validation_for);
 use Test::BDD::Cucumber::Definitions qw(S);
-use Test::BDD::Cucumber::Definitions::Struct::Types qw(:all);
+use Test::BDD::Cucumber::Definitions::Types qw(:all);
 use Test::More;
 use Try::Tiny;
 
@@ -69,10 +69,10 @@ my $validator_jsonpath_eq = validation_for(
     params => [
 
         # data structure jsonpath
-        { type => StructJsonpath },
+        { type => TbcdNonEmptyStr },
 
         # data structure value
-        { type => StructString },
+        { type => TbcdStr },
     ]
 );
 
@@ -92,10 +92,10 @@ my $validator_jsonpath_re = validation_for(
     params => [
 
         # data structure jsonpath
-        { type => StructJsonpath },
+        { type => TbcdNonEmptyStr },
 
         # data structure regexp
-        { type => StructRegexp },
+        { type => TbcdRegexpRef },
     ]
 );
 
