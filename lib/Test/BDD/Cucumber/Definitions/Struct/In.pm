@@ -10,24 +10,41 @@ our $VERSION = '0.21';
 
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]
+## no critic [RegularExpressions::ProhibitComplexRegexes]
 
-# http response content read JSON
+#       http response content read JSON
 When qr/http response content read JSON/, sub {
-    read_content();
+    http_response_content_read_json();
 };
 
-# struct data element "" eq ""
+#       zip archive members read list
+When qr/zip archive members read list/, sub {
+    zip_archive_members_read_list();
+};
+
+#       struct data element "(.+?)" eq "(.*)"
 Then qr/struct data element "(.+?)" eq "(.*)"/, sub {
-    my ( $jsonpath, $value ) = ( $1, $2 );
-
-    jsonpath_eq( $jsonpath, $value );
+    struct_data_element_eq( $1, $2 );
 };
 
-# struct data element "" re ""
-Then qr/struct data element "(.+?)" re "(.+)"/, sub {
-    my ( $jsonpath, $value ) = ( $1, $2 );
+#       struct data array "(.+?)" any eq "(.*)"
+Then qr/struct data array "(.+?)" any eq "(.*)"/, sub {
+    struct_data_array_any_eq( $1, $2 );
+};
 
-    jsonpath_re( $jsonpath, $value );
+#       struct data element "(.+?)" re "(.*)"
+Then qr/struct data element "(.+?)" re "(.*)"/, sub {
+    struct_data_element_re( $1, $2 );
+};
+
+#       struct data array "(.+?)" any re "(.*)"
+Then qr/struct data array "(.+?)" any re "(.*)"/, sub {
+    struct_data_array_any_re( $1, $2 );
+};
+
+#       struct data array "(.+?)" count "(.*)"
+Then qr/struct data array "(.+?)" count "(.*)"/, sub {
+    struct_data_array_count( $1, $2 );
 };
 
 1;
