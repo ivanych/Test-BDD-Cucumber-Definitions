@@ -1,5 +1,20 @@
 Revision history for Test-BDD-Cucumber-Definitions
 
+0.22    2018-03-04
+        [ All ]
+        - In all types of Tbcd*, the scenario and environment variables are interpolated
+
+        [ HTTP ]
+        - Types have been removed, HTTP module are redesigned to use the ::Types
+
+        [ Struct ]
+        - Types have been removed, Struct module are redesigned to use the ::Types
+        - In the module Struct were added functions for working with arrays
+        - All functions are renamed more uniformly
+
+        [ Zip ]
+        - Functions in the Zip module have been renamed
+
 0.21    2018-03-01
         [ All ]
         - Types common to all modules have been added (::Types)

@@ -7,7 +7,7 @@ use utf8;
 use Test::BDD::Cucumber::Definitions qw(Given When Then);
 use Test::BDD::Cucumber::Definitions::Zip qw(:util);
 
-our $VERSION = '0.21';
+our $VERSION = '0.22';
 
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]
