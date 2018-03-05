@@ -1,0 +1,85 @@
+{
+   "abstract" : "The great new Test::BDD::Cucumber::Definitions!",
+   "author" : [
+      "Mikhail Ivanov, C<< <m.ivanych at gmail.com> >>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Minilla/v3.0.16, CPAN::Meta::Converter version 2.150005",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Test-BDD-Cucumber-Definitions",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "xt",
+         "inc",
+         "share",
+         "eg",
+         "examples",
+         "author",
+         "builder"
+      ]
+   },
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Test::More" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "Module::Build::Tiny" : "0.035"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Test::CPAN::Meta" : "0",
+            "Test::MinimumVersion::Fast" : "0.04",
+            "Test::PAUSE::Permissions" : "0.04",
+            "Test::Pod" : "1.41",
+            "Test::Spellunker" : "v0.2.7"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Archive::Zip" : "0",
+            "Const::Fast" : "0",
+            "Data::Printer" : "0",
+            "HTTP::Response" : "0",
+            "HTTP::Tiny" : "0",
+            "Hash::MultiValue" : "0",
+            "IO::String" : "0",
+            "JSON::Path" : "0",
+            "JSON::XS" : "0",
+            "MooseX::Types" : "0",
+            "MooseX::Types::Common" : "0",
+            "Params::ValidationCompiler" : "0.22",
+            "Test::BDD::Cucumber" : "0",
+            "Try::Tiny" : "0",
+            "perl" : "5.006"
+         }
+      }
+   },
+   "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/ivanych/Test-BDD-Cucumber-Definitions/issues"
+      },
+      "homepage" : "https://github.com/ivanych/Test-BDD-Cucumber-Definitions",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/ivanych/Test-BDD-Cucumber-Definitions.git",
+         "web" : "https://github.com/ivanych/Test-BDD-Cucumber-Definitions"
+      }
+   },
+   "version" : "0.22",
+   "x_contributors" : [
+      "Mikhail Ivanov <m.ivanych@gmail.com>"
+   ],
+   "x_serialization_backend" : "JSON::PP version 2.27300"
+}
