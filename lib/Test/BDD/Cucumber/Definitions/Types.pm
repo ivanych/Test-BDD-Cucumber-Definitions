@@ -21,7 +21,7 @@ use MooseX::Types (
     ]
 );
 
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 
 # Interpolation of variables (scenario and environment)
 sub _interpolate {
