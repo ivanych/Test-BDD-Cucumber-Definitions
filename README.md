@@ -1,60 +1,106 @@
-# Test-BDD-Cucumber-Definitions [![Build Status](https://travis-ci.org/ivanych/Test-BDD-Cucumber-Definitions.svg?branch=master)](https://travis-ci.org/ivanych/Test-BDD-Cucumber-Definitions)
+[![Build Status](https://travis-ci.org/ivanych/Test-BDD-Cucumber-Definitions.svg?branch=master)](https://travis-ci.org/ivanych/Test-BDD-Cucumber-Definitions) [![MetaCPAN Release](https://badge.fury.io/pl/Test-BDD-Cucumber-Definitions.svg)](https://metacpan.org/release/Test-BDD-Cucumber-Definitions)
+# NAME
 
-Коллекция шагов для функционального тестирования в стиле Cucumber на языке Perl.
+Test::BDD::Cucumber::Definitions - The great new Test::BDD::Cucumber::Definitions!
 
-# Шаги
+# VERSION
 
-Шаги могут быть написаны на разных языках. В настоящее время есть шаги на двух языках:
+Version 0.23
 
-* In - Internal (внутренний псевдо-язык)
-* Ru - Русский
+# SYNOPSIS
 
-# Определения
+Quick summary of what the module does.
 
-Определения всех имеющихся шагов написаны как отдельные функции. Это позволяет легко создавать новые шаги,
-используя для этого готовые определения. Новые шаги просто собираются из готовых определений как конструктор.
+Perhaps a little code snippet.
 
-Допустим, есть шаг:
+    use Test::BDD::Cucumber::Definitions;
 
-    When запрошена страница 'http://metacpan.org'
+    my $foo = Test::BDD::Cucumber::Definitions->new();
+    ...
 
-и его определение:
+# EXPORT
 
-    get_page('http://metacpan.org');
+A list of functions that can be exported.  You can delete this section
+if you don't export anything, such as for a purely object-oriented module.
 
-Есть второй шаг:
+# SUBROUTINES/METHODS
 
-    Then страница загрузилась успешно
+## function1
 
-и его определение:
+## function2
 
-    check_code(200);
+# AUTHOR
 
-Теперь можно легко создать новый шаг:
+Mikhail Ivanov, `<m.ivanych at gmail.com>`
 
-    Given загружена страница 'http//metacpan.org'
+# BUGS
 
-просто объединив два определения:
+Please report any bugs or feature requests to `bug-test-bdd-cucumber-definitions at rt.cpan.org`, or through
+the web interface at [http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Test-BDD-Cucumber-Definitions](http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Test-BDD-Cucumber-Definitions).  I will be notified, and then you'll
+automatically be notified of progress on your bug as I make changes.
 
-    get_page('http://metacpan.org');
-    check_code(200);    
+# SUPPORT
 
-# Модули
+You can find documentation for this module with the perldoc command.
 
-Дистрибутив содержит несколько модулей для работы с различными протоколами и данными.
+    perldoc Test::BDD::Cucumber::Definitions
 
-## HTTP
+You can also look for information at:
 
-Модуль содержит функции для работы с веб-ресурсами по протоколу HTTP.
+- RT: CPAN's request tracker (report bugs here)
 
-## Struct
+    [http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-BDD-Cucumber-Definitions](http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-BDD-Cucumber-Definitions)
 
-Модуль содержит функции для работы с perl-структурами данных.
+- AnnoCPAN: Annotated CPAN documentation
 
-## Var
+    [http://annocpan.org/dist/Test-BDD-Cucumber-Definitions](http://annocpan.org/dist/Test-BDD-Cucumber-Definitions)
 
-Модуль содержит функции для работы с переменными
+- CPAN Ratings
 
-## Zip
+    [http://cpanratings.perl.org/d/Test-BDD-Cucumber-Definitions](http://cpanratings.perl.org/d/Test-BDD-Cucumber-Definitions)
 
-Модуль содержит функции для работы с архивами Zip
+- Search CPAN
+
+    [http://search.cpan.org/dist/Test-BDD-Cucumber-Definitions/](http://search.cpan.org/dist/Test-BDD-Cucumber-Definitions/)
+
+# ACKNOWLEDGEMENTS
+
+# LICENSE AND COPYRIGHT
+
+Copyright 2018 Mikhail Ivanov.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the the Artistic License (2.0). You may obtain a
+copy of the full license at:
+
+[http://www.perlfoundation.org/artistic\_license\_2\_0](http://www.perlfoundation.org/artistic_license_2_0)
+
+Any use, modification, and distribution of the Standard or Modified
+Versions is governed by this Artistic License. By using, modifying or
+distributing the Package, you accept this license. Do not use, modify,
+or distribute the Package, if you do not accept this license.
+
+If your Modified Version has been derived from a Modified Version made
+by someone other than you, you are nevertheless required to ensure that
+your Modified Version complies with the requirements of this license.
+
+This license does not grant you the right to use any trademark, service
+mark, tradename, or logo of the Copyright Holder.
+
+This license includes the non-exclusive, worldwide, free-of-charge
+patent license to make, have made, use, offer to sell, sell, import and
+otherwise transfer the Package with respect to any patent claims
+licensable by the Copyright Holder that are necessarily infringed by the
+Package. If you institute patent litigation (including a cross-claim or
+counterclaim) against any party alleging that the Package constitutes
+direct or contributory patent infringement, then this Artistic License
+to you shall terminate on the date that such litigation is filed.
+
+Disclaimer of Warranty: THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER
+AND CONTRIBUTORS "AS IS' AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES.
+THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, OR NON-INFRINGEMENT ARE DISCLAIMED TO THE EXTENT PERMITTED BY
+YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
+CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
+CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
