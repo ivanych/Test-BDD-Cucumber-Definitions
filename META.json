@@ -1,7 +1,7 @@
 {
-   "abstract" : "The great new Test::BDD::Cucumber::Definitions!",
+   "abstract" : "a collection of step definitions for Test Driven Development",
    "author" : [
-      "Mikhail Ivanov, C<< <m.ivanych at gmail.com> >>"
+      "Mikhail Ivanov C<< <m.ivanych@gmail.com> >>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v3.0.16, CPAN::Meta::Converter version 2.150005",
