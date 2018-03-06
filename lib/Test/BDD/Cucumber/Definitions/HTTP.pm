@@ -16,7 +16,7 @@ use Test::BDD::Cucumber::Definitions::Types qw(:all);
 use Test::More;
 use Try::Tiny;
 
-our $VERSION = '0.23';
+our $VERSION = '0.24';
 
 our @EXPORT_OK = qw(
     request_send

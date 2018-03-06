@@ -2,6 +2,11 @@ Revision history for Test-BDD-Cucumber-Definitions
 
 {{$NEXT}}
 
+0.24 2018-03-06T20:35:27Z
+
+    [ All ]
+    - The POD of the main module has been edited
+
 0.23 2018-03-05T21:04:21Z
     [ All ]
     - Migrate to Minilla
