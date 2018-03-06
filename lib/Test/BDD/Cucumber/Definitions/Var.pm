@@ -62,7 +62,7 @@ sub var_scenario_var_random {
 
     my @CHARS = ( 'a' .. 'z', 'A' .. 'Z', 0 .. 9 );
     my $str = "X" x $length;
-    $str =~ s/X(?=X*\z)/$CHARS[ int( rand( @CHARS ) ) ]/ge;
+    $str =~ s/X(?=X*\z)/$CHARS[ int( rand( @CHARS ) ) ]/gex;
 
     S->{var}->{scenario}->{vars}->{$name} = $str;
 

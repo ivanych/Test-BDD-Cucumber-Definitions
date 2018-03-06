@@ -155,7 +155,7 @@ sub struct_data_array_any_re {
 
     my @result = jpath( S->{struct}->{data}, $jsonpath );
 
-    my $ok = any {/$regexp/} @result;
+    my $ok = any {/$regexp/x} @result;
 
     ok( $ok, qq{Struct data array "$jsonpath" any re "$regexp"} );
 
