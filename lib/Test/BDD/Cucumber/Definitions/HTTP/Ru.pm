@@ -56,11 +56,9 @@ our $VERSION = '0.24';
 
 =cut
 
-# http request header "" set ""
+#       http request header "(.+?)" set "(.*)"
 When qr/заголовок HTTP-запроса "(.+?)" установлен в значение "(.*)"/, sub {
-    my ( $header, $value ) = ( $1, $2 );
-
-    header_set( $header, $value );
+    http_request_header_set( $1, $2 );
 };
 
 =pod
@@ -77,11 +75,9 @@ When qr/заголовок HTTP-запроса "(.+?)" установлен в �
 
 =cut
 
-# http request content set
+#       http request content set
 When qr/тело HTTP-запроса заполнено данными/, sub {
-    my ($content) = C->data();
-
-    content_set($content);
+    http_request_content_set( C->data() );
 };
 
 =head2 Отправка запроса
@@ -95,11 +91,9 @@ When qr/тело HTTP-запроса заполнено данными/, sub {
 
 =cut
 
-# http request "" send ""
+#       http request "(.+?)" send "(.+)"
 When qr/HTTP-запрос "(.+?)" отправлен на "(.+)"/, sub {
-    my ( $method, $url ) = ( $1, $2 );
-
-    request_send( $method, $url );
+    http_request_send( $1, $2 );
 };
 
 =head2 Проверка ответа
@@ -112,11 +106,9 @@ When qr/HTTP-запрос "(.+?)" отправлен на "(.+)"/, sub {
 
 =cut
 
-# http response code eq ""
+#       http response code eq "(.+)"
 Then qr/код HTTP-ответа равен "(.+)"/, sub {
-    my ($code) = ($1);
-
-    code_eq($code);
+    http_response_code_eq($1);
 };
 
 =pod
@@ -127,11 +119,9 @@ Then qr/код HTTP-ответа равен "(.+)"/, sub {
 
 =cut
 
-# http response header "" eq ""
+#       http response header "(.+?)" eq "(.*)"
 Then qr/заголовок HTTP-ответа "(.+?)" равен "(.*)"/, sub {
-    my ( $name, $value ) = ( $1, $2 );
-
-    header_eq( $name, $value );
+    http_response_header_eq( $1, $2 );
 };
 
 =pod
@@ -142,11 +132,9 @@ Then qr/заголовок HTTP-ответа "(.+?)" равен "(.*)"/, sub {
 
 =cut
 
-# http response header "" re ""
+#       http response header "(.+?)" re "(.+)"
 Then qr/заголовок HTTP-ответа "(.+?)" совпадает с "(.+)"/, sub {
-    my ( $name, $value ) = ( $1, $2 );
-
-    header_re( $name, $value );
+    http_response_header_re( $1, $2 );
 };
 
 =pod
@@ -157,11 +145,9 @@ Then qr/заголовок HTTP-ответа "(.+?)" совпадает с "(.+)
 
 =cut
 
-# http response content eq ""
+#       http response content eq "(.*)"
 Then qr/содержимое HTTP-ответа равно "(.*)"/, sub {
-    my ($value) = ($1);
-
-    content_eq($value);
+    http_response_content_eq($1);
 };
 
 =pod
@@ -172,11 +158,9 @@ Then qr/содержимое HTTP-ответа равно "(.*)"/, sub {
 
 =cut
 
-# http response content re ""
+#       http response content re "(.+)"
 Then qr/содержимое HTTP-ответа совпадает с "(.+)"/, sub {
-    my ($value) = ($1);
-
-    content_re($value);
+    http_response_content_re($1);
 };
 
 1;

@@ -19,18 +19,23 @@ use Try::Tiny;
 our $VERSION = '0.24';
 
 our @EXPORT_OK = qw(
-    request_send
-    code_eq
-    header_set header_eq header_re
-    content_set content_eq content_re
+    http_request_header_set
+    http_request_content_set
+    http_request_send
+    http_response_code_eq
+    http_response_header_eq http_response_header_re
+    http_response_content_eq http_response_content_re
 );
+
 our %EXPORT_TAGS = (
     util => [
         qw(
-            request_send
-            code_eq
-            header_set header_eq header_re
-            content_set content_eq content_re
+            http_request_header_set
+            http_request_content_set
+            http_request_send
+            http_response_code_eq
+            http_response_header_eq http_response_header_re
+            http_response_content_eq http_response_content_re
             )
     ]
 );
@@ -41,9 +46,7 @@ my $http = HTTP::Tiny->new();
 # The content field in the response will contain the text of the exception.
 const my $HTTP_INTERNAL_EXCEPTION => 599;
 
-## no critic [Subroutines::RequireArgUnpacking]
-
-my $validator_header_set = validation_for(
+my $validator_eq = validation_for(
     params => [
 
         # http request header name
@@ -54,15 +57,7 @@ my $validator_header_set = validation_for(
     ]
 );
 
-sub header_set {
-    my ( $header, $value ) = $validator_header_set->(@_);
-
-    S->{http}->{request}->{headers}->{$header} = $value;
-
-    return;
-}
-
-my $validator_content_set = validation_for(
+my $validator_q = validation_for(
     params => [
 
         # http request content value
@@ -70,13 +65,32 @@ my $validator_content_set = validation_for(
     ]
 );
 
-sub content_set {
-    my ($content) = $validator_content_set->(@_);
+my $validator_i = validation_for(
+    params => [
 
-    S->{http}->{request}->{content} = $content;
+        # http response code value
+        { type => TbcdInt },
+    ]
+);
 
-    return;
-}
+my $validator_re = validation_for(
+    params => [
+
+        # http response header name
+        { type => TbcdNonEmptyStr },
+
+        # http response header regexp
+        { type => TbcdRegexpRef }
+    ]
+);
+
+my $validator_r = validation_for(
+    params => [
+
+        # http response content regexp
+        { type => TbcdRegexpRef }
+    ]
+);
 
 my $validator_request_send = validation_for(
     params => [
@@ -89,7 +103,25 @@ my $validator_request_send = validation_for(
     ]
 );
 
-sub request_send {
+## no critic [Subroutines::RequireArgUnpacking]
+
+sub http_request_header_set {
+    my ( $header, $value ) = $validator_eq->(@_);
+
+    S->{http}->{request}->{headers}->{$header} = $value;
+
+    return;
+}
+
+sub http_request_content_set {
+    my ($content) = $validator_q->(@_);
+
+    S->{http}->{request}->{content} = $content;
+
+    return;
+}
+
+sub http_request_send {
     my ( $method, $url ) = $validator_request_send->(@_);
 
     my $options = {
@@ -122,16 +154,8 @@ sub request_send {
     return;
 }
 
-my $validator_code_eq = validation_for(
-    params => [
-
-        # http response code value
-        { type => TbcdInt },
-    ]
-);
-
-sub code_eq {
-    my ($code) = $validator_code_eq->(@_);
+sub http_response_code_eq {
+    my ($code) = $validator_i->(@_);
 
     is( S->{http}->{response}->{status}, $code, qq{Http response code eq "$code"} );
 
@@ -140,20 +164,8 @@ sub code_eq {
     return;
 }
 
-my $validator_header_eq = validation_for(
-    params => [
-
-        # http response header name
-        { type => TbcdNonEmptyStr },
-
-        # http response header value
-        { type => TbcdStr },
-
-    ]
-);
-
-sub header_eq {
-    my ( $header, $value ) = $validator_header_eq->(@_);
+sub http_response_header_eq {
+    my ( $header, $value ) = $validator_eq->(@_);
 
     is( S->{http}->{response}->{headers}->{ lc $header }, $value, qq{Http response header "$header" eq "$value"} );
 
@@ -162,20 +174,8 @@ sub header_eq {
     return;
 }
 
-my $validator_header_re = validation_for(
-    params => [
-
-        # http response header name
-        { type => TbcdNonEmptyStr },
-
-        # http response header regexp
-        { type => TbcdRegexpRef }
-    ]
-);
-
-sub header_re {
-
-    my ( $header, $value ) = $validator_header_re->(@_);
+sub http_response_header_re {
+    my ( $header, $value ) = $validator_re->(@_);
 
     like( S->{http}->{response}->{headers}->{ lc $header }, $value, qq{Http response header "$header" re "$value"} );
 
@@ -184,17 +184,8 @@ sub header_re {
     return;
 }
 
-my $validator_content_eq = validation_for(
-    params => [
-
-        # http response content value
-        { type => TbcdStr },
-
-    ]
-);
-
-sub content_eq {
-    my ($content) = $validator_content_eq->(@_);
+sub http_response_content_eq {
+    my ($content) = $validator_q->(@_);
 
     is( S->{http}->{response_object}->decoded_content(), $content, qq{Http response content eq "$content"} );
 
@@ -203,16 +194,8 @@ sub content_eq {
     return;
 }
 
-my $validator_content_re = validation_for(
-    params => [
-
-        # http response content regexp
-        { type => TbcdRegexpRef }
-    ]
-);
-
-sub content_re {
-    my ($content) = $validator_content_re->(@_);
+sub http_response_content_re {
+    my ($content) = $validator_r->(@_);
 
     like( S->{http}->{response_object}->decoded_content(), $content, qq{Http response content re "$content"} );
 
