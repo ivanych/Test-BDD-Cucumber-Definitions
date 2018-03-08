@@ -13,6 +13,7 @@ our @EXPORT_OK = qw(
     validator_i
     validator_s
     validator_r
+    validator_ni
     validator_ns
     validator_nn
     validator_nr
@@ -24,6 +25,7 @@ our %EXPORT_TAGS = (
             validator_i
             validator_s
             validator_r
+            validator_ni
             validator_ns
             validator_nn
             validator_nr
@@ -65,6 +67,21 @@ my $validator_r = validation_for(
 
 sub validator_r {
     return $validator_r;
+}
+
+my $validator_ni = validation_for(
+    params => [
+
+        # name
+        { type => TbcdNonEmptyStr },
+
+        # value int
+        { type => TbcdInt },
+    ]
+);
+
+sub validator_ni {
+    return $validator_ni;
 }
 
 my $validator_ns = validation_for(
