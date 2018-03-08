@@ -7,10 +7,9 @@ use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use JSON::Path qw(jpath jpath1);
 use JSON::XS;
-use Params::ValidationCompiler qw(validation_for);
 use List::Util qw(any);
 use Test::BDD::Cucumber::Definitions qw(S);
-use Test::BDD::Cucumber::Definitions::Types qw(:all);
+use Test::BDD::Cucumber::Definitions::Validator qw(:all);
 use Test::More;
 use Try::Tiny;
 
@@ -85,19 +84,8 @@ sub zip_archive_members_read_list {
     return;
 }
 
-my $validator_eq = validation_for(
-    params => [
-
-        # jsonpath
-        { type => TbcdNonEmptyStr },
-
-        # value
-        { type => TbcdStr },
-    ]
-);
-
 sub struct_data_element_eq {
-    my ( $jsonpath, $value ) = $validator_eq->(@_);
+    my ( $jsonpath, $value ) = validator_ns->(@_);
 
     my $result = jpath1( S->{struct}->{data}, $jsonpath );
 
@@ -109,7 +97,7 @@ sub struct_data_element_eq {
 }
 
 sub struct_data_array_any_eq {
-    my ( $jsonpath, $value ) = $validator_eq->(@_);
+    my ( $jsonpath, $value ) = validator_ns->(@_);
 
     my @result = jpath( S->{struct}->{data}, $jsonpath );
 
@@ -123,19 +111,8 @@ sub struct_data_array_any_eq {
     return;
 }
 
-my $validator_re = validation_for(
-    params => [
-
-        # jsonpath
-        { type => TbcdNonEmptyStr },
-
-        # regexp
-        { type => TbcdRegexpRef },
-    ]
-);
-
 sub struct_data_element_re {
-    my ( $jsonpath, $regexp ) = $validator_re->(@_);
+    my ( $jsonpath, $regexp ) = validator_nr->(@_);
 
     my $result = jpath1( S->{struct}->{data}, $jsonpath );
 
@@ -151,7 +128,7 @@ sub struct_data_element_re {
 }
 
 sub struct_data_array_any_re {
-    my ( $jsonpath, $regexp ) = $validator_eq->(@_);
+    my ( $jsonpath, $regexp ) = validator_nr->(@_);
 
     my @result = jpath( S->{struct}->{data}, $jsonpath );
 
@@ -165,19 +142,8 @@ sub struct_data_array_any_re {
     return;
 }
 
-my $validator_count = validation_for(
-    params => [
-
-        # jsonpath
-        { type => TbcdNonEmptyStr },
-
-        # count
-        { type => TbcdInt },
-    ]
-);
-
 sub struct_data_array_count {
-    my ( $jsonpath, $count ) = $validator_count->(@_);
+    my ( $jsonpath, $count ) = validator_ni->(@_);
 
     my @result = jpath( S->{struct}->{data}, $jsonpath );
 
