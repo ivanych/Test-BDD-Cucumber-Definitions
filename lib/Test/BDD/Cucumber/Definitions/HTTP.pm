@@ -3,18 +3,15 @@ package Test::BDD::Cucumber::Definitions::HTTP;
 use strict;
 use warnings;
 
-use Carp;
 use Const::Fast;
 use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use Hash::MultiValue;
 use HTTP::Response;
 use HTTP::Tiny;
-use Params::ValidationCompiler qw(validation_for);
 use Test::BDD::Cucumber::Definitions qw(S);
-use Test::BDD::Cucumber::Definitions::Types qw(:all);
+use Test::BDD::Cucumber::Definitions::Validator qw(:all);
 use Test::More;
-use Try::Tiny;
 
 our $VERSION = '0.24';
 
@@ -46,67 +43,10 @@ my $http = HTTP::Tiny->new();
 # The content field in the response will contain the text of the exception.
 const my $HTTP_INTERNAL_EXCEPTION => 599;
 
-my $validator_eq = validation_for(
-    params => [
-
-        # http request header name
-        { type => TbcdNonEmptyStr },
-
-        # http request header value
-        { type => TbcdStr }
-    ]
-);
-
-my $validator_q = validation_for(
-    params => [
-
-        # http request content value
-        { type => TbcdStr },
-    ]
-);
-
-my $validator_i = validation_for(
-    params => [
-
-        # http response code value
-        { type => TbcdInt },
-    ]
-);
-
-my $validator_re = validation_for(
-    params => [
-
-        # http response header name
-        { type => TbcdNonEmptyStr },
-
-        # http response header regexp
-        { type => TbcdRegexpRef }
-    ]
-);
-
-my $validator_r = validation_for(
-    params => [
-
-        # http response content regexp
-        { type => TbcdRegexpRef }
-    ]
-);
-
-my $validator_request_send = validation_for(
-    params => [
-
-        # http request method value
-        { type => TbcdNonEmptyStr },
-
-        # http request url value
-        { type => TbcdNonEmptyStr },
-    ]
-);
-
 ## no critic [Subroutines::RequireArgUnpacking]
 
 sub http_request_header_set {
-    my ( $header, $value ) = $validator_eq->(@_);
+    my ( $header, $value ) = validator_ns->(@_);
 
     S->{http}->{request}->{headers}->{$header} = $value;
 
@@ -114,7 +54,7 @@ sub http_request_header_set {
 }
 
 sub http_request_content_set {
-    my ($content) = $validator_q->(@_);
+    my ($content) = validator_s->(@_);
 
     S->{http}->{request}->{content} = $content;
 
@@ -122,7 +62,7 @@ sub http_request_content_set {
 }
 
 sub http_request_send {
-    my ( $method, $url ) = $validator_request_send->(@_);
+    my ( $method, $url ) = validator_nn->(@_);
 
     my $options = {
         headers => S->{http}->{request}->{headers},
@@ -155,7 +95,7 @@ sub http_request_send {
 }
 
 sub http_response_code_eq {
-    my ($code) = $validator_i->(@_);
+    my ($code) = validator_i->(@_);
 
     is( S->{http}->{response}->{status}, $code, qq{Http response code eq "$code"} );
 
@@ -165,7 +105,7 @@ sub http_response_code_eq {
 }
 
 sub http_response_header_eq {
-    my ( $header, $value ) = $validator_eq->(@_);
+    my ( $header, $value ) = validator_ns->(@_);
 
     is( S->{http}->{response}->{headers}->{ lc $header }, $value, qq{Http response header "$header" eq "$value"} );
 
@@ -175,7 +115,7 @@ sub http_response_header_eq {
 }
 
 sub http_response_header_re {
-    my ( $header, $value ) = $validator_re->(@_);
+    my ( $header, $value ) = validator_nr->(@_);
 
     like( S->{http}->{response}->{headers}->{ lc $header }, $value, qq{Http response header "$header" re "$value"} );
 
@@ -185,7 +125,7 @@ sub http_response_header_re {
 }
 
 sub http_response_content_eq {
-    my ($content) = $validator_q->(@_);
+    my ($content) = validator_s->(@_);
 
     is( S->{http}->{response_object}->decoded_content(), $content, qq{Http response content eq "$content"} );
 
@@ -195,7 +135,7 @@ sub http_response_content_eq {
 }
 
 sub http_response_content_re {
-    my ($content) = $validator_r->(@_);
+    my ($content) = validator_r->(@_);
 
     like( S->{http}->{response_object}->decoded_content(), $content, qq{Http response content re "$content"} );
 
