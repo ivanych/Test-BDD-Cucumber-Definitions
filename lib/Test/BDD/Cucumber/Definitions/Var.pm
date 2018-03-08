@@ -5,9 +5,8 @@ use warnings;
 
 use DDP ( show_unicode => 1 );
 use Exporter qw(import);
-use Params::ValidationCompiler qw(validation_for);
 use Test::BDD::Cucumber::Definitions qw(S);
-use Test::BDD::Cucumber::Definitions::Types qw(:all);
+use Test::BDD::Cucumber::Definitions::Validator qw(:all);
 use Test::More;
 
 our $VERSION = '0.24';
@@ -27,38 +26,16 @@ our %EXPORT_TAGS = (
 
 ## no critic [Subroutines::RequireArgUnpacking]
 
-my $validator_var_set = validation_for(
-    params => [
-
-        # var name
-        { type => TbcdNonEmptyStr },
-
-        # var value
-        { type => TbcdStr }
-    ]
-);
-
 sub var_scenario_var_set {
-    my ( $name, $value ) = $validator_var_set->(@_);
+    my ( $name, $value ) = validator_ns->(@_);
 
     S->{var}->{scenario}->{vars}->{$name} = $value;
 
     return;
 }
 
-my $validator_var_random = validation_for(
-    params => [
-
-        # var name
-        { type => TbcdNonEmptyStr },
-
-        # var length
-        { type => TbcdInt }
-    ]
-);
-
 sub var_scenario_var_random {
-    my ( $name, $length ) = $validator_var_random->(@_);
+    my ( $name, $length ) = validator_ni->(@_);
 
     my @CHARS = ( 'a' .. 'z', 'A' .. 'Z', 0 .. 9 );
     my $str = "X" x $length;
