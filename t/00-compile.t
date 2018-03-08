@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 14;
+use Test::More tests => 15;
 
 use_ok $_ for qw(
     Test::BDD::Cucumber::Definitions
@@ -12,6 +12,7 @@ use_ok $_ for qw(
     Test::BDD::Cucumber::Definitions::Struct
     Test::BDD::Cucumber::Definitions::Struct::In
     Test::BDD::Cucumber::Definitions::Struct::Ru
+    Test::BDD::Cucumber::Definitions::Validator
     Test::BDD::Cucumber::Definitions::Var
     Test::BDD::Cucumber::Definitions::Var::In
     Test::BDD::Cucumber::Definitions::Var::Ru
