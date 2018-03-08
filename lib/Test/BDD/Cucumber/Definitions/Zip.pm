@@ -7,9 +7,8 @@ use Archive::Zip;
 use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use IO::String;
-use Params::ValidationCompiler qw(validation_for);
 use Test::BDD::Cucumber::Definitions qw(S);
-use Test::BDD::Cucumber::Definitions::Types qw(:all);
+use Test::BDD::Cucumber::Definitions::Validator qw(:all);
 use Test::More;
 use Try::Tiny;
 
