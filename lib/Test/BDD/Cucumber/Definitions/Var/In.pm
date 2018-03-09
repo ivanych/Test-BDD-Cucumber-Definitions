@@ -15,16 +15,12 @@ our $VERSION = '0.24';
 
 #       var scenario var "(.+?)" set "(.*)"
 When qr/var scenario var "(.+?)" set "(.*)"/, sub {
-    my ( $name, $value ) = ( $1, $2 );
-
-    var_scenario_var_set( $name, $value );
+    var_scenario_var_set( $1, $2);
 };
 
 #       var scenario var "(.+?)" random "(.*)"
 When qr/var scenario var "(.+?)" random "(.*)"/, sub {
-    my ( $name, $value ) = ( $1, $2 );
-
-    var_scenario_var_random( $name, $value );
+    var_scenario_var_random( $1, $2 );
 };
 
 1;
