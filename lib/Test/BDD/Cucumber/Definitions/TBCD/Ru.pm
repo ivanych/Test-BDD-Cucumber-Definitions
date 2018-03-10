@@ -9,7 +9,7 @@ use Test::BDD::Cucumber::Definitions::Struct::Ru;
 use Test::BDD::Cucumber::Definitions::Var::Ru;
 use Test::BDD::Cucumber::Definitions::Zip::Ru;
 
-our $VERSION = '0.24';
+our $VERSION = '0.25';
 
 sub import {
     Test::BDD::Cucumber::Definitions::HTTP::Ru->import;
