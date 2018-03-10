@@ -1,10 +1,12 @@
 use strict;
 use warnings;
 
-use Test::More tests => 15;
+use Test::More tests => 17;
 
 use_ok $_ for qw(
     Test::BDD::Cucumber::Definitions
+    Test::BDD::Cucumber::Definitions::TBCD::In
+    Test::BDD::Cucumber::Definitions::TBCD::Ru
     Test::BDD::Cucumber::Definitions::Types
     Test::BDD::Cucumber::Definitions::HTTP
     Test::BDD::Cucumber::Definitions::HTTP::In
