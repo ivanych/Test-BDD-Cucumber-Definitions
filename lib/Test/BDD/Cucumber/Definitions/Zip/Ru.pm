@@ -52,6 +52,10 @@ Test::BDD::Cucumber::Definitions::Zip::Ru - Шаги на русском язы�
 
 =head1 ШАГИ
 
+=cut
+
+sub import {
+
 =head2 Чтение данных
 
 =pod
@@ -63,10 +67,13 @@ Test::BDD::Cucumber::Definitions::Zip::Ru - Шаги на русском язы�
 
 =cut
 
-#       http response content read Zip
-When qr/содержимое HTTP-ответа прочитано как Zip/, sub {
-    http_response_content_read_zip();
-};
+    #       http response content read Zip
+    When qr/содержимое HTTP-ответа прочитано как Zip/, sub {
+        http_response_content_read_zip();
+    };
+
+    return;
+}
 
 1;
 

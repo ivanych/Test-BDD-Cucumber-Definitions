@@ -13,14 +13,19 @@ our $VERSION = '0.24';
 ## no critic [RegularExpressions::RequireExtendedFormatting]
 ## no critic [RegularExpressions::ProhibitComplexRegexes]
 
-#       var scenario var "(.+?)" set "(.*)"
-When qr/var scenario var "(.+?)" set "(.*)"/, sub {
-    var_scenario_var_set( $1, $2);
-};
+sub import {
 
-#       var scenario var "(.+?)" random "(.*)"
-When qr/var scenario var "(.+?)" random "(.*)"/, sub {
-    var_scenario_var_random( $1, $2 );
-};
+    #       var scenario var "(.+?)" set "(.*)"
+    When qr/var scenario var "(.+?)" set "(.*)"/, sub {
+        var_scenario_var_set( $1, $2 );
+    };
+
+    #       var scenario var "(.+?)" random "(.*)"
+    When qr/var scenario var "(.+?)" random "(.*)"/, sub {
+        var_scenario_var_random( $1, $2 );
+    };
+
+    return;
+}
 
 1;

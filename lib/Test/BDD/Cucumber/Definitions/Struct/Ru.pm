@@ -53,6 +53,10 @@ Test::BDD::Cucumber::Definitions::Struct::Ru - Шаги на русском яз
 
 =head1 ШАГИ
 
+=cut
+
+sub import {
+
 =head2 Чтение данных
 
 =pod
@@ -64,10 +68,10 @@ Test::BDD::Cucumber::Definitions::Struct::Ru - Шаги на русском яз
 
 =cut
 
-#       http response content read JSON
-When qr/содержимое HTTP-ответа прочитано как JSON/, sub {
-    http_response_content_read_json();
-};
+    #       http response content read JSON
+    When qr/содержимое HTTP-ответа прочитано как JSON/, sub {
+        http_response_content_read_json();
+    };
 
 =pod
 
@@ -78,10 +82,10 @@ When qr/содержимое HTTP-ответа прочитано как JSON/, 
 
 =cut
 
-#       zip archive members read list
-When qr/перечень файлов Zip-архива прочитан как список/, sub {
-    zip_archive_members_read_list();
-};
+    #       zip archive members read list
+    When qr/перечень файлов Zip-архива прочитан как список/, sub {
+        zip_archive_members_read_list();
+    };
 
 =head2 Проверка данных
 
@@ -96,10 +100,10 @@ L<JSON::Path>.
 
 =cut
 
-#       struct data element "(.+?)" eq "(.*)"
-Then qr/элемент структуры данных "(.+?)" равен "(.*)"/, sub {
-    struct_data_element_eq( $1, $2 );
-};
+    #       struct data element "(.+?)" eq "(.*)"
+    Then qr/элемент структуры данных "(.+?)" равен "(.*)"/, sub {
+        struct_data_element_eq( $1, $2 );
+    };
 
 =pod
 
@@ -109,10 +113,11 @@ Then qr/элемент структуры данных "(.+?)" равен "(.*)"
 
 =cut
 
-#       struct data array "(.+?)" any eq "(.*)"
-Then qr/массив структур данных "(.+?)" содержит элемент, равный "(.*)"/, sub {
-    struct_data_array_any_eq( $1, $2 );
-};
+    #       struct data array "(.+?)" any eq "(.*)"
+    Then qr/массив структур данных "(.+?)" содержит элемент, равный "(.*)"/,
+        sub {
+        struct_data_array_any_eq( $1, $2 );
+        };
 
 =pod
 
@@ -122,10 +127,10 @@ Then qr/массив структур данных "(.+?)" содержит эл
 
 =cut
 
-#       struct data element "(.+?)" re "(.*)"
-Then qr/элемент структуры данных "(.+?)" совпадает с "(.*)"/, sub {
-    struct_data_element_re( $1, $2 );
-};
+    #       struct data element "(.+?)" re "(.*)"
+    Then qr/элемент структуры данных "(.+?)" совпадает с "(.*)"/, sub {
+        struct_data_element_re( $1, $2 );
+    };
 
 =pod
 
@@ -135,12 +140,12 @@ Then qr/элемент структуры данных "(.+?)" совпадае�
 
 =cut
 
-#       struct data array "(.+?)" any re "(.*)"
-Then
-    qr/массив структур данных "(.+?)" содержит элемент, совпадающий с "(.*)"/,
-    sub {
-    struct_data_array_any_re( $1, $2 );
-    };
+    #       struct data array "(.+?)" any re "(.*)"
+    Then
+        qr/массив структур данных "(.+?)" содержит элемент, совпадающий с "(.*)"/,
+        sub {
+        struct_data_array_any_re( $1, $2 );
+        };
 
 =pod
 
@@ -152,10 +157,14 @@ Then
 
 =cut
 
-#       struct data array "(.+?)" count "(.*)"
-Then qr/массив структур данных "(.+?)" содержит "(.*)" элемент(?:а|ов)?/, sub {
-    struct_data_array_count( $1, $2 );
-};
+    #       struct data array "(.+?)" count "(.*)"
+    Then qr/массив структур данных "(.+?)" содержит "(.*)" элемент(?:а|ов)?/,
+        sub {
+        struct_data_array_count( $1, $2 );
+        };
+
+    return;
+}
 
 1;
 

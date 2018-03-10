@@ -11,4 +11,12 @@ use Test::BDD::Cucumber::Definitions::Zip::Ru;
 
 our $VERSION = '0.24';
 
+sub import {
+    Test::BDD::Cucumber::Definitions::HTTP::Ru->import;
+    Test::BDD::Cucumber::Definitions::Struct::Ru->import;
+    Test::BDD::Cucumber::Definitions::Var::Ru->import;
+    Test::BDD::Cucumber::Definitions::Zip::Ru->import;
+
+    return;
+}
 1;
