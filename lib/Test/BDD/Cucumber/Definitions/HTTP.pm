@@ -66,7 +66,7 @@ sub http_request_send {
 
     my $options = {
         headers => S->{http}->{request}->{headers},
-        content => S->{http}->{request}->{content},
+        content => _encode_utf8( S->{http}->{request}->{content} ),
     };
 
     S->{http}->{response} = $http->request( $method, $url, $options );
@@ -142,6 +142,16 @@ sub http_response_content_re {
     diag( 'Http response charset = ' . np S->{http}->{response_object}->headers->content_type_charset );
 
     return;
+}
+
+sub _encode_utf8 {
+    my ($str) = @_;
+
+    if ( utf8::is_utf8 $str ) {
+        utf8::encode $str;
+    }
+
+    return $str;
 }
 
 1;
