@@ -2,6 +2,11 @@ Revision history for Test-BDD-Cucumber-Definitions
 
 {{$NEXT}}
 
+0.26 2018-03-11T20:32:12Z
+
+    [ HTTP ]
+    - The body of the HTTP request is encoded in utf8
+
 0.25 2018-03-10T22:07:18Z
 
     [ All ]
