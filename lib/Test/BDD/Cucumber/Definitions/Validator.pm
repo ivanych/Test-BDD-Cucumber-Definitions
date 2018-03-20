@@ -7,7 +7,7 @@ use Exporter qw(import);
 use Params::ValidationCompiler qw(validation_for);
 use Test::BDD::Cucumber::Definitions::Types qw(:all);
 
-our $VERSION = '0.26';
+our $VERSION = '0.27';
 
 our @EXPORT_OK = qw(
     validator_i
