@@ -5,6 +5,7 @@ requires 'File::Slurper';
 requires 'HTTP::Response';
 requires 'HTTP::Tiny';
 requires 'Hash::MultiValue';
+requires 'IO::Capture';
 requires 'IO::String';
 requires 'IPC::Run3';
 requires 'JSON::Path';
