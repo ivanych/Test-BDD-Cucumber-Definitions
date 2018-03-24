@@ -20,6 +20,16 @@ sub import {
         file_path_set($1);
     };
 
+    #       file read text "(.*)"
+    When qr/file read text "(.*)"/, sub {
+        file_read_text($1);
+    };
+
+    #       file read binary
+    When qr/file read binary/, sub {
+        file_read_binary();
+    };
+
     #       file exists
     Then qr/file exists/, sub {
         file_exists();

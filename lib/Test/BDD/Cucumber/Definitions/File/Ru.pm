@@ -3,7 +3,7 @@ package Test::BDD::Cucumber::Definitions::File::Ru;
 use strict;
 use warnings;
 use utf8;
-
+use DDP;
 use Test::BDD::Cucumber::Definitions qw(Given When Then);
 use Test::BDD::Cucumber::Definitions::File qw(:util);
 
@@ -85,6 +85,34 @@ sub import {
     #        file path set "(.*)"
     Given qr/задан путь к файлу "(.*)"/, sub {
         file_path_set($1);
+    };
+
+=head2 Действия
+
+=pod
+
+Прочитать содержимое текстового файла:
+
+    When прочитан текстовый файл в кодировке "utf-8"
+
+=cut
+
+    #       file read text "(.*)"
+    When qr/прочитан текстовый файл в кодировке "(.*)"/, sub {
+        file_read_text($1);
+    };
+
+=pod
+
+Прочитать содержимое двоичного файла:
+
+    When прочитан двоичный файл
+
+=cut
+
+    #       file read binary
+    When qr/прочитан двоичный файл/, sub {
+        file_read_binary();
     };
 
 =head2 Проверки
