@@ -1,6 +1,7 @@
 requires 'Archive::Zip';
 requires 'Const::Fast';
 requires 'Data::Printer';
+requires 'File::Slurper';
 requires 'HTTP::Response';
 requires 'HTTP::Tiny';
 requires 'Hash::MultiValue';
