@@ -2,6 +2,11 @@ Revision history for Test-BDD-Cucumber-Definitions
 
 {{$NEXT}}
 
+0.29 2018-03-25T18:16:33Z
+
+    [ All ]
+    - Error message when checking type was fixed
+
 0.28 2018-03-25T18:07:36Z
 
     [ All ]

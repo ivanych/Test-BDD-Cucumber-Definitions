@@ -16,7 +16,7 @@ use Test::BDD::Cucumber::Definitions::Validator qw(:all);
 use Test::More;
 use Try::Tiny;
 
-our $VERSION = '0.28';
+our $VERSION = '0.29';
 
 our @EXPORT_OK = qw(
     file_path_set
