@@ -2,6 +2,15 @@ Revision history for Test-BDD-Cucumber-Definitions
 
 {{$NEXT}}
 
+0.28 2018-03-25T18:07:36Z
+
+    [ All ]
+    - Requirement File::Slurper was added
+    - Requirement IO::Capture was added
+
+    [ File ]
+    - Steps to read the files were added
+
 0.27 2018-03-20T20:29:03Z
 
     [ All ]

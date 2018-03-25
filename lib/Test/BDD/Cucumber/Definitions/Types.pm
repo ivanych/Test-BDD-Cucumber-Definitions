@@ -21,7 +21,7 @@ use MooseX::Types (
     ]
 );
 
-our $VERSION = '0.27';
+our $VERSION = '0.28';
 
 # Interpolation of variables (scenario and environment)
 sub _interpolate {
@@ -66,7 +66,7 @@ subtype(
     TbcdStr,
     as Str,
     message {
-        qq{"$_" is not a valid TBCD Str}
+        sprintf('%s is not a valid TBCD Str', np $_);
     }
 );
 

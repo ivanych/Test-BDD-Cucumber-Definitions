@@ -50,9 +50,11 @@
             "Archive::Zip" : "0",
             "Const::Fast" : "0",
             "Data::Printer" : "0",
+            "File::Slurper" : "0",
             "HTTP::Response" : "0",
             "HTTP::Tiny" : "0",
             "Hash::MultiValue" : "0",
+            "IO::Capture" : "0",
             "IO::String" : "0",
             "IPC::Run3" : "0",
             "JSON::Path" : "0",
@@ -78,7 +80,7 @@
          "web" : "https://github.com/ivanych/Test-BDD-Cucumber-Definitions"
       }
    },
-   "version" : "0.27",
+   "version" : "0.28",
    "x_contributors" : [
       "Mikhail Ivanov <m.ivanych@gmail.com>"
    ],
