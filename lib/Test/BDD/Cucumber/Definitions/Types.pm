@@ -51,7 +51,7 @@ subtype(
     TbcdInt,
     as Int,
     message {
-        qq{"$_" is not a valid TBCD Int}
+        sprintf('%s is not a valid TBCD Int', np $_);
     }
 );
 
@@ -81,7 +81,7 @@ subtype(
     TbcdNonEmptyStr,
     as NonEmptyStr,
     message {
-        qq{"$_" is not a valid TBCD NonEmptyStr}
+        sprintf('%s is not a valid TBCD NonEmptyStr', np $_);
     }
 );
 
@@ -96,7 +96,7 @@ subtype(
     TbcdRegexpRef,
     as RegexpRef,
     message {
-        qq{"$_" is not a valid TBCD TbcdRegexpRef}
+        sprintf('%s is not a valid TBCD RegexpRef', np $_);
     }
 );
 
