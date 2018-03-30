@@ -17,6 +17,7 @@ our $VERSION = '0.29';
 
 our @EXPORT_OK = qw(
     http_response_content_read_json
+    file_content_read_json
     zip_archive_members_read_list
     struct_data_element_eq struct_data_array_any_eq
     struct_data_element_re struct_data_array_any_re
@@ -26,6 +27,7 @@ our %EXPORT_TAGS = (
     util => [
         qw(
             http_response_content_read_json
+            file_content_read_json
             zip_archive_members_read_list
             struct_data_element_eq struct_data_array_any_eq
             struct_data_element_re struct_data_array_any_re
@@ -68,6 +70,33 @@ sub http_response_content_read_json {
     diag( 'Http response content = ' . np $decoded_content );
 
     return;
+}
+
+sub file_content_read_json {
+
+    # Clean data
+    S->{struct}->{data} = undef;
+
+    my $error;
+
+    S->{struct}->{data} = try {
+        decode_json( S->{file}->content );
+    }
+    catch {
+        $error = "Could not read file content as JSON: $_[0]";
+
+        return;
+    };
+
+    if ( !ok( !$error, qq{File content was read as JSON} ) ) {
+        diag($error);
+
+        return;
+    }
+
+    diag( 'File content = ' . np S->{file}->{content} );
+
+    return 1;
 }
 
 sub zip_archive_members_read_list {

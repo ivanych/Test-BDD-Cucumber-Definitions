@@ -75,6 +75,20 @@ sub import {
 
 =pod
 
+Прочитать JSON из L<Файла|Test::BDD::Cucumber::Definitions::File::Ru>
+в perl-структуру:
+
+    When содержимое файла прочитано как JSON
+
+=cut
+
+    #       file content read JSON
+    When qr/содержимое файла прочитано как JSON/, sub {
+        file_content_read_json();
+    };
+
+=pod
+
 Прочитать список файлов L<Zip-архива|Test::BDD::Cucumber::Definitions::HTTP::Ru>
 в perl-структуру
 

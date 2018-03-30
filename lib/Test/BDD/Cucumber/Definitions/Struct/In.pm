@@ -20,6 +20,11 @@ sub import {
         http_response_content_read_json();
     };
 
+    #       file content read JSON
+    When qr/file content read JSON/, sub {
+        file_content_read_json();
+    };
+
     #       zip archive members read list
     When qr/zip archive members read list/, sub {
         zip_archive_members_read_list();
