@@ -55,6 +55,16 @@ sub import {
         struct_data_array_count( $1, $2 );
     };
 
+    #       struct data element "(.+?)" key "(.*)"
+    Then qr/struct data element "(.+?)" key "(.*)"/, sub {
+        struct_data_element_key( $1, $2 );
+    };
+
+    #       struct data list "(.+?)" all key "(.*)"
+    Then qr/struct data list "(.+?)" all key "(.*)"/, sub {
+        struct_data_list_all_key( $1, $2 );
+    };
+
     return;
 }
 

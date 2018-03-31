@@ -7,7 +7,7 @@ use DDP ( show_unicode => 1 );
 use Exporter qw(import);
 use JSON::Path qw(jpath jpath1);
 use JSON::XS;
-use List::Util qw(any);
+use List::Util qw(any all);
 use Test::BDD::Cucumber::Definitions qw(S);
 use Test::BDD::Cucumber::Definitions::Validator qw(:all);
 use Test::More;
@@ -21,6 +21,7 @@ our @EXPORT_OK = qw(
     zip_archive_members_read_list
     struct_data_element_eq struct_data_array_any_eq
     struct_data_element_re struct_data_array_any_re
+    struct_data_element_key struct_data_list_all_key
     struct_data_array_count
 );
 our %EXPORT_TAGS = (
@@ -31,6 +32,7 @@ our %EXPORT_TAGS = (
             zip_archive_members_read_list
             struct_data_element_eq struct_data_array_any_eq
             struct_data_element_re struct_data_array_any_re
+            struct_data_element_key struct_data_list_all_key
             struct_data_array_count
             )
     ]
@@ -179,6 +181,42 @@ sub struct_data_array_count {
     is( scalar @result, $count, qq{Struct data array "$jsonpath" count "$count"} );
 
     diag( 'Find = ' . np @result );
+    diag( 'Data = ' . np S->{struct}->{data} );
+
+    return;
+}
+
+sub struct_data_element_key {
+    my ( $jsonpath, $value ) = validator_ns->(@_);
+
+    my $result = jpath1( S->{struct}->{data}, $jsonpath );
+
+    if (   ok( $result, qq{Struct data element "$jsonpath" exists} )
+        && is( ref $result, 'HASH', qq{Struct data element "$jsonpath" is a hash} )
+        && ok( exists $result->{$value}, qq{Struct data element "$jsonpath" contains key "$value"} ) )
+    {
+        return 1;
+    }
+
+    diag( "Element = " . np $result );
+    diag( 'Data = ' . np S->{struct}->{data} );
+
+    return;
+}
+
+sub struct_data_list_all_key {
+    my ( $jsonpath, $value ) = validator_ns->(@_);
+
+    my @result = jpath( S->{struct}->{data}, $jsonpath );
+
+    if (   ok( @result, qq{Struct data list "$jsonpath" is not empty} )
+        && ok( ( all { ref $_ eq 'HASH' } @result ),    qq{Struct data list "$jsonpath" is a list of hashes} )
+        && ok( ( all { exists $_->{$value} } @result ), qq{Struct data list "$jsonpath" all contains key "$value"} ) )
+    {
+        return 1;
+    }
+
+    diag( "List = " . np @result );
     diag( 'Data = ' . np S->{struct}->{data} );
 
     return;

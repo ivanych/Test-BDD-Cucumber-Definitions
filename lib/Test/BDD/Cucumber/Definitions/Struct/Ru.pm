@@ -177,6 +177,32 @@ L<JSON::Path>.
         struct_data_array_count( $1, $2 );
         };
 
+=pod
+
+Проверить элемент на наличие ключа:
+
+    Then элемент структуры данных "$.user" содержит ключ "login"
+
+=cut
+
+    #       struct data element "(.+?)" key "(.*)"
+    Then qr/элемент структуры данных "(.+?)" содержит ключ "(.*)"/, sub {
+        struct_data_element_key( $1, $2 );
+    };
+
+=pod
+
+Проверить элементы в списке на наличие ключа:
+
+    Then все элементы в списке структур данных "$.users" содержат ключ "login"
+
+=cut
+
+    #       struct data list "(.+?)" all key "(.*)"
+    Then qr/все элементы в списке структур данных "(.+?)" содержат ключ "(.*)"/, sub {
+        struct_data_list_all_key( $1, $2 );
+    };
+
     return;
 }
 
