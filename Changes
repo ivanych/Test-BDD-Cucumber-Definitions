@@ -2,6 +2,19 @@ Revision history for Test-BDD-Cucumber-Definitions
 
 {{$NEXT}}
 
+0.30 2018-04-01T19:01:56Z
+
+    [ File ]
+    -  All the data in the File module is stored in the object
+
+    [ Struct ]
+    - The step "file content read JSON" is added to the Struct module
+    - The Struct module adds steps to check the hash keys
+
+    [ All ]
+    - Requirement Moose was added
+    - Requirement namespace::autoclean was added
+
 0.29 2018-03-25T18:16:33Z
 
     [ All ]

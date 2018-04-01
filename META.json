@@ -59,11 +59,13 @@
             "IPC::Run3" : "0",
             "JSON::Path" : "0",
             "JSON::XS" : "0",
+            "Moose" : "0",
             "MooseX::Types" : "0",
             "MooseX::Types::Common" : "0",
             "Params::ValidationCompiler" : "0.22",
             "Test::BDD::Cucumber" : "0",
             "Try::Tiny" : "0",
+            "namespace::autoclean" : "0",
             "perl" : "5.006"
          }
       }
@@ -80,7 +82,7 @@
          "web" : "https://github.com/ivanych/Test-BDD-Cucumber-Definitions"
       }
    },
-   "version" : "0.29",
+   "version" : "0.30",
    "x_contributors" : [
       "Mikhail Ivanov <m.ivanych@gmail.com>"
    ],
