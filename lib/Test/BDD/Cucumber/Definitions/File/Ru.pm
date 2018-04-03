@@ -7,7 +7,7 @@ use DDP;
 use Test::BDD::Cucumber::Definitions qw(Given When Then);
 use Test::BDD::Cucumber::Definitions::File qw(:util);
 
-our $VERSION = '0.30';
+our $VERSION = '0.31';
 
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]

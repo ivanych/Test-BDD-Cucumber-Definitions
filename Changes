@@ -2,6 +2,11 @@ Revision history for Test-BDD-Cucumber-Definitions
 
 {{$NEXT}}
 
+0.31 2018-04-03T20:24:27Z
+
+    [ Struct ]
+    - The Struct::struct_data_element function was added
+
 0.30 2018-04-01T19:01:56Z
 
     [ File ]
