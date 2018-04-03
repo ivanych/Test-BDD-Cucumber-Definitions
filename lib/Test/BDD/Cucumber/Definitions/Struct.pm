@@ -22,6 +22,7 @@ our @EXPORT_OK = qw(
     struct_data_element_eq struct_data_array_any_eq
     struct_data_element_re struct_data_array_any_re
     struct_data_element_key struct_data_list_all_key
+    struct_data_element
     struct_data_array_count
 );
 our %EXPORT_TAGS = (
@@ -33,6 +34,7 @@ our %EXPORT_TAGS = (
             struct_data_element_eq struct_data_array_any_eq
             struct_data_element_re struct_data_array_any_re
             struct_data_element_key struct_data_list_all_key
+            struct_data_element
             struct_data_array_count
             )
     ]
@@ -220,6 +222,12 @@ sub struct_data_list_all_key {
     diag( 'Data = ' . np S->{struct}->{data} );
 
     return;
+}
+
+sub struct_data_element {
+    my ($jsonpath) = validator_n->(@_);
+
+    return jpath1( S->{struct}->{data}, $jsonpath );
 }
 
 1;
