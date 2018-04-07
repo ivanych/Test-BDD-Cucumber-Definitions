@@ -84,7 +84,7 @@ sub file_content_read_json {
     my $error;
 
     S->{struct}->{data} = try {
-        decode_json( S->{file}->content );
+        decode_json( S->{File}->content );
     }
     catch {
         $error = "Could not read file content as JSON: $_[0]";
@@ -94,11 +94,10 @@ sub file_content_read_json {
 
     if ( !ok( !$error, qq{File content was read as JSON} ) ) {
         diag($error);
+        diag( 'File content = ' . np S->{File}->content );
 
         return;
     }
-
-    diag( 'File content = ' . np S->{file}->{content} );
 
     return 1;
 }
