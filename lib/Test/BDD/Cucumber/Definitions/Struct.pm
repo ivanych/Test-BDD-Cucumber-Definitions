@@ -119,7 +119,7 @@ sub data_element_eq {
     return;
 }
 
-sub data_array_any_eq {
+sub data_list_any_eq {
     my $self = shift;
     my ( $jsonpath, $value ) = validator_ns->(@_);
 
@@ -127,9 +127,9 @@ sub data_array_any_eq {
 
     my $ok = any { $_ eq $value } @result;
 
-    ok( $ok, qq{Struct data array "$jsonpath" any eq "$value"} );
+    ok( $ok, qq{Struct data list "$jsonpath" any eq "$value"} );
 
-    diag( 'Find = ' . np @result );
+    diag( 'List = ' . np @result );
     diag( 'Data = ' . np S->{_Struct}->{data} );
 
     return;
@@ -152,7 +152,7 @@ sub data_element_re {
     return;
 }
 
-sub data_array_any_re {
+sub data_list_any_re {
     my $self = shift;
     my ( $jsonpath, $regexp ) = validator_nr->(@_);
 
@@ -160,23 +160,23 @@ sub data_array_any_re {
 
     my $ok = any {/$regexp/x} @result;
 
-    ok( $ok, qq{Struct data array "$jsonpath" any re "$regexp"} );
+    ok( $ok, qq{Struct data list "$jsonpath" any re "$regexp"} );
 
-    diag( 'Find = ' . np @result );
+    diag( 'List = ' . np @result );
     diag( 'Data = ' . np S->{_Struct}->{data} );
 
     return;
 }
 
-sub data_array_count {
+sub data_list_count {
     my $self = shift;
     my ( $jsonpath, $count ) = validator_ni->(@_);
 
     my @result = jpath( S->{_Struct}->{data}, $jsonpath );
 
-    is( scalar @result, $count, qq{Struct data array "$jsonpath" count "$count"} );
+    is( scalar @result, $count, qq{Struct data list "$jsonpath" count "$count"} );
 
-    diag( 'Find = ' . np @result );
+    diag( 'List = ' . np @result );
     diag( 'Data = ' . np S->{_Struct}->{data} );
 
     return;

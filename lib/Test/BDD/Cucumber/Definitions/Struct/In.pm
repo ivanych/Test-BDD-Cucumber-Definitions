@@ -35,9 +35,9 @@ sub import {
         Struct->data_element_eq( $1, $2 );
     };
 
-    #       struct data array "(.+?)" any eq "(.*)"
-    Then qr/struct data array "(.+?)" any eq "(.*)"/, sub {
-        Struct->data_array_any_eq( $1, $2 );
+    #       struct data list "(.+?)" any eq "(.*)"
+    Then qr/struct data list "(.+?)" any eq "(.*)"/, sub {
+        Struct->data_list_any_eq( $1, $2 );
     };
 
     #       struct data element "(.+?)" re "(.*)"
@@ -45,14 +45,14 @@ sub import {
         Struct->data_element_re( $1, $2 );
     };
 
-    #       struct data array "(.+?)" any re "(.*)"
-    Then qr/struct data array "(.+?)" any re "(.*)"/, sub {
-        Struct->data_array_any_re( $1, $2 );
+    #       struct data list "(.+?)" any re "(.*)"
+    Then qr/struct data list "(.+?)" any re "(.*)"/, sub {
+        Struct->data_list_any_re( $1, $2 );
     };
 
-    #       struct data array "(.+?)" count "(.*)"
-    Then qr/struct data array "(.+?)" count "(.*)"/, sub {
-        Struct->data_array_count( $1, $2 );
+    #       struct data list "(.+?)" count "(.*)"
+    Then qr/struct data list "(.+?)" count "(.*)"/, sub {
+        Struct->data_list_count( $1, $2 );
     };
 
     #       struct data element "(.+?)" key "(.*)"

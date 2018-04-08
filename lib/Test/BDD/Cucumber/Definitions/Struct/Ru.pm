@@ -127,10 +127,10 @@ L<JSON::Path>.
 
 =cut
 
-    #       struct data array "(.+?)" any eq "(.*)"
+    #       struct data list "(.+?)" any eq "(.*)"
     Then qr/массив структур данных "(.+?)" содержит элемент, равный "(.*)"/,
         sub {
-        Struct->data_array_any_eq( $1, $2 );
+        Struct->data_list_any_eq( $1, $2 );
         };
 
 =pod
@@ -154,11 +154,11 @@ L<JSON::Path>.
 
 =cut
 
-    #       struct data array "(.+?)" any re "(.*)"
+    #       struct data list "(.+?)" any re "(.*)"
     Then
         qr/массив структур данных "(.+?)" содержит элемент, совпадающий с "(.*)"/,
         sub {
-        Struct->data_array_any_re( $1, $2 );
+        Struct->data_list_any_re( $1, $2 );
         };
 
 =pod
@@ -171,10 +171,10 @@ L<JSON::Path>.
 
 =cut
 
-    #       struct data array "(.+?)" count "(.*)"
+    #       struct data list "(.+?)" count "(.*)"
     Then qr/массив структур данных "(.+?)" содержит "(.*)" элемент(?:а|ов)?/,
         sub {
-        Struct->data_array_count( $1, $2 );
+        Struct->data_list_count( $1, $2 );
         };
 
 =pod
