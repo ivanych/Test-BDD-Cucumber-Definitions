@@ -92,13 +92,13 @@ sub read_zip_archive_members_as_list {
     # Clean data
     S->{_Struct}->{data} = undef;
 
-    my @members = S->{zip}->{archive}->memberNames();
+    my @members = S->{Zip}->member_names();
 
     S->{_Struct}->{data} = \@members;
 
     pass('Zip archive members was read as list');
 
-    return;
+    return 1;
 }
 
 sub data_element_eq {

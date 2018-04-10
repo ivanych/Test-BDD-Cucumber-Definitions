@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 
 use Test::BDD::Cucumber::Definitions qw(Given When Then);
-use Test::BDD::Cucumber::Definitions::Zip qw(:util);
+use Test::BDD::Cucumber::Definitions::Zip qw(Zip);
 
 our $VERSION = '0.33';
 
@@ -15,9 +15,9 @@ our $VERSION = '0.33';
 
 sub import {
 
-    #       http response content read Zip
-    When qr/http response content read Zip/, sub {
-        http_response_content_read_zip();
+    #        read http response content as Zip
+    Given qr/read http response content as Zip/, sub {
+        Zip->read_http_response_content_as_zip();
     };
 
     return;
