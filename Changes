@@ -2,6 +2,12 @@ Revision history for Test-BDD-Cucumber-Definitions
 
 {{$NEXT}}
 
+0.33 2018-04-10T19:29:27Z
+
+    [ HTTP ]
+    - Module "HTTP" is rewritten in object-oriented style
+    - The HTTP::content function was added
+
 0.32 2018-04-09T18:00:19Z
 
     [ File ]

@@ -13,7 +13,7 @@ use Test::BDD::Cucumber::Definitions::Validator qw(:all);
 use Test::More;
 use Try::Tiny;
 
-our $VERSION = '0.32';
+our $VERSION = '0.33';
 
 our @EXPORT_OK = qw(Struct);
 
