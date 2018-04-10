@@ -7,7 +7,7 @@ use utf8;
 use Test::BDD::Cucumber::Definitions qw(C Given When Then);
 use Test::BDD::Cucumber::Definitions::HTTP qw(HTTP);
 
-our $VERSION = '0.33';
+our $VERSION = '0.34';
 
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]

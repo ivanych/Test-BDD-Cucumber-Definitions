@@ -2,6 +2,12 @@ Revision history for Test-BDD-Cucumber-Definitions
 
 {{$NEXT}}
 
+0.34 2018-04-10T20:09:17Z
+
+    [ Zip ]
+    - Module "Zip" is rewritten in object-oriented style
+    - The Zip::member_names function was added
+
 0.33 2018-04-10T19:29:27Z
 
     [ HTTP ]
