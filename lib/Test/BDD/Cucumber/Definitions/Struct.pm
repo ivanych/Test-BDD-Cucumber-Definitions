@@ -36,10 +36,8 @@ sub read_http_response_content_as_json {
 
     my $error;
 
-    my $decoded_content = S->{http}->{response_object}->decoded_content();
-
     S->{_Struct}->{data} = try {
-        decode_json($decoded_content);
+        decode_json( S->{HTTP}->content() );
     }
     catch {
         $error = "Could not read http response content as JSON: $_[0]";
@@ -47,17 +45,14 @@ sub read_http_response_content_as_json {
         return;
     };
 
-    if ($error) {
-        fail(qq{Http response content was read as JSON});
+    if ( !ok( !$error, qq{Http response content was read as JSON} ) ) {
         diag($error);
-    }
-    else {
-        pass(qq{Http response content was read as JSON});
+        diag( 'Http response content = ' . np S->{HTTP}->content );
+
+        return;
     }
 
-    diag( 'Http response content = ' . np $decoded_content );
-
-    return;
+    return 1;
 }
 
 sub read_file_content_as_json {

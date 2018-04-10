@@ -34,7 +34,7 @@ sub http_response_content_read_zip {
 
     my $error;
 
-    my $decoded_content = S->{http}->{response_object}->decoded_content();
+    my $decoded_content = S->{HTTP}->content();
 
     S->{zip}->{archive} = try {
         my $fh = IO::String->new( \$decoded_content );
