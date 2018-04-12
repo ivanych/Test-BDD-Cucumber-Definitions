@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 
 use Test::BDD::Cucumber::Definitions qw(C Given When Then);
-use Test::BDD::Cucumber::Definitions::Var qw(:util);
+use Test::BDD::Cucumber::Definitions::Var qw(Var);
 
 our $VERSION = '0.34';
 
@@ -15,14 +15,14 @@ our $VERSION = '0.34';
 
 sub import {
 
-    #       var scenario var "(.+?)" set "(.*)"
-    When qr/var scenario var "(.+?)" set "(.*)"/, sub {
-        var_scenario_var_set( $1, $2 );
+    #        var scenario var "(.+?)" set "(.*)"
+    Given qr/var scenario var "(.+?)" set "(.*)"/, sub {
+        Var->scenario_var_set( $1, $2 );
     };
 
-    #       var scenario var "(.+?)" random "(.*)"
-    When qr/var scenario var "(.+?)" random "(.*)"/, sub {
-        var_scenario_var_random( $1, $2 );
+    #        var scenario var "(.+?)" random "(.*)"
+    Given qr/var scenario var "(.+?)" random "(.*)"/, sub {
+        Var->scenario_var_random( $1, $2 );
     };
 
     return;
