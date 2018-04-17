@@ -30,6 +30,11 @@ sub import {
         Struct->read_zip_archive_members_as_list();
     };
 
+    #        read base response as struct
+    Given qr/read base response as struct/, sub {
+        Struct->read_base_response_as_struct();
+    };
+
     #       struct data element "(.+?)" eq "(.*)"
     Then qr/struct data element "(.+?)" eq "(.*)"/, sub {
         Struct->data_element_eq( $1, $2 );
