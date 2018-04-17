@@ -5,6 +5,9 @@ use Test::More tests => 20;
 
 use_ok $_ for qw(
     Test::BDD::Cucumber::Definitions
+    Test::BDD::Cucumber::Definitions::Base
+    Test::BDD::Cucumber::Definitions::Base::In
+    Test::BDD::Cucumber::Definitions::Base::Ru
     Test::BDD::Cucumber::Definitions::TBCD::In
     Test::BDD::Cucumber::Definitions::TBCD::Ru
     Test::BDD::Cucumber::Definitions::Types
