@@ -3,8 +3,10 @@
 use strict;
 use warnings;
 
-use Test::Strict tests => 24;
+use Test::Compile;
 
-$Test::Strict::TEST_STRICT = 0;
+my $test = Test::Compile->new();
 
-all_perl_files_ok( 'lib', 't' );
+$test->plan( tests => 23 );
+
+$test->all_files_ok();

@@ -24,5 +24,5 @@ on build => sub {
 };
 
 on 'test' => sub {
-  requires 'Test::Strict';
+  requires 'Test::Compile';
 };
