@@ -7,7 +7,7 @@ use utf8;
 use Test::BDD::Cucumber::Definitions qw(Given When Then);
 use Test::BDD::Cucumber::Definitions::Struct qw(Struct);
 
-our $VERSION = '0.35';
+our $VERSION = '0.36';
 
 ## no critic [RegularExpressions::ProhibitCaptureWithoutTest]
 ## no critic [RegularExpressions::RequireExtendedFormatting]
