@@ -22,3 +22,7 @@ requires 'Try::Tiny';
 on build => sub {
     requires 'Test::More';
 };
+
+on 'test' => sub {
+  requires 'Test::Strict';
+};
