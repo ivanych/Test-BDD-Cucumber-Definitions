@@ -25,4 +25,5 @@ on build => sub {
 
 on 'test' => sub {
   requires 'Test::Compile';
+  requires 'Test::Perl::Critic';
 };
