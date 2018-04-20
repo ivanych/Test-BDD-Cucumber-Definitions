@@ -2,3 +2,6 @@ name = "Test-BDD-Cucumber-Definitions"
 license="perl_5"
 module_maker="ModuleBuildTiny"
 badges = ["travis", "metacpan"]
+
+[FileGatherer]
+include_dotfiles = true
