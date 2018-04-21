@@ -5,3 +5,4 @@ badges = ["travis", "metacpan"]
 
 [FileGatherer]
 include_dotfiles = true
+exclude_match = ['^\.(?!perlcriticrc|perltidyrc)']
