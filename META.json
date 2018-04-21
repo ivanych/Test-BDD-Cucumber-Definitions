@@ -72,7 +72,9 @@
       },
       "test" : {
          "requires" : {
-            "Test::Compile" : "0"
+            "Test::Compile" : "0",
+            "Test::Perl::Critic" : "0",
+            "Test::PerlTidy" : "0"
          }
       }
    },
@@ -88,7 +90,7 @@
          "web" : "https://github.com/ivanych/Test-BDD-Cucumber-Definitions"
       }
    },
-   "version" : "0.37",
+   "version" : "0.38",
    "x_contributors" : [
       "Mikhail Ivanov <m.ivanych@gmail.com>"
    ],
