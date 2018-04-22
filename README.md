@@ -6,7 +6,7 @@ Driven Development
 
 # VERSION
 
-Version 0.38
+Version 0.39
 
 # SYNOPSIS
 

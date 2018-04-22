@@ -21,7 +21,7 @@ use MooseX::Types (
     ]
 );
 
-our $VERSION = '0.38';
+our $VERSION = '0.39';
 
 sub S { return Test::BDD::Cucumber::StepFile::S }
 
