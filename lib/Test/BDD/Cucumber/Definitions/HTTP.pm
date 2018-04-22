@@ -9,8 +9,7 @@ use Exporter qw(import);
 use Hash::MultiValue;
 use HTTP::Response;
 use HTTP::Tiny;
-use Test::BDD::Cucumber::Definitions qw(S);
-use Test::BDD::Cucumber::Definitions::Validator qw(:all);
+use Test::BDD::Cucumber::Definitions qw(S :validator);
 use Test::More;
 
 our $VERSION = '0.38';

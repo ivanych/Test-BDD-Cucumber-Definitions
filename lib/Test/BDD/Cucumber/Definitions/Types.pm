@@ -6,7 +6,7 @@ use warnings;
 use DDP ( show_unicode => 1 );
 use MooseX::Types::Common::String qw(NonEmptyStr);
 use MooseX::Types::Moose qw(Int Str RegexpRef);
-use Test::BDD::Cucumber::Definitions qw(S);
+use Test::BDD::Cucumber::StepFile qw();
 use Test::More;
 use Try::Tiny;
 
@@ -22,6 +22,8 @@ use MooseX::Types (
 );
 
 our $VERSION = '0.38';
+
+sub S { return Test::BDD::Cucumber::StepFile::S }
 
 # Interpolation of variables (scenario and environment)
 sub _interpolate {
