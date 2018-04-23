@@ -2,6 +2,11 @@ Revision history for Test-BDD-Cucumber-Definitions
 
 {{$NEXT}}
 
+0.40 2018-04-23T20:31:20Z
+
+    [ All ]
+    - The "Types" module has been removed; All types are moved to the "Definitions" module
+
 0.39 2018-04-22T20:23:51Z
 
     [ All ]

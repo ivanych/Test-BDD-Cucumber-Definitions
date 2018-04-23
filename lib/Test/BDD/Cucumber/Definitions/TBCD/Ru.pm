@@ -11,7 +11,7 @@ use Test::BDD::Cucumber::Definitions::Struct::Ru;
 use Test::BDD::Cucumber::Definitions::Var::Ru;
 use Test::BDD::Cucumber::Definitions::Zip::Ru;
 
-our $VERSION = '0.39';
+our $VERSION = '0.40';
 
 sub import {
 

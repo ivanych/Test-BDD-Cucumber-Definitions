@@ -64,7 +64,6 @@
             "Params::ValidationCompiler" : "0.22",
             "Test::BDD::Cucumber" : "0",
             "Try::Tiny" : "0",
-            "namespace::autoclean" : "0",
             "perl" : "5.006"
          }
       },
@@ -88,7 +87,7 @@
          "web" : "https://github.com/ivanych/Test-BDD-Cucumber-Definitions"
       }
    },
-   "version" : "0.39",
+   "version" : "0.40",
    "x_contributors" : [
       "Mikhail Ivanov <m.ivanych@gmail.com>"
    ],
