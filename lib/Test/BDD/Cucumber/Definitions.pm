@@ -4,10 +4,13 @@ use 5.006;
 use strict;
 use warnings;
 
+use DDP ( show_unicode => 1 );
 use Exporter qw(import);
+use Moose::Util::TypeConstraints;
 use Params::ValidationCompiler qw(validation_for);
-use Test::BDD::Cucumber::Definitions::Types qw(:all);
 use Test::BDD::Cucumber::StepFile qw(Given When Then);
+use Test::More;
+use Try::Tiny;
 
 =head1 NAME
 
@@ -98,11 +101,104 @@ our %EXPORT_TAGS = (
 sub S { return Test::BDD::Cucumber::StepFile::S }
 sub C { return Test::BDD::Cucumber::StepFile::C }
 
+# Interpolation of variables (scenario and environment)
+sub _interpolate {
+    my ($value) = @_;
+
+    my $orig = $value;
+
+    # Scenario variables
+    my $is = $value =~ s| S\{ (.+?) \} |
+        S->{Var}->scenario($1) // q{};
+    |gxe;
+
+    # Environment variables
+    my $ie = $value =~ s/ \$\{ (.+?) \} /
+        $ENV{$1} || '';
+    /gxe;
+
+    if ( $is || $ie ) {
+        diag( sprintf( q{Inteprolated value "%s" = %s}, $orig, np $value) );
+    }
+
+    return $value;
+}
+
+# TbcdInt
+subtype(
+    'TbcdInt',
+    as 'Int',
+    message {
+        sprintf( '%s is not a valid TBCD Int', np $_);
+    }
+);
+
+coerce(
+    'TbcdInt',
+    from 'Str',
+    via { _interpolate $_ }
+);
+
+# TbcdStr
+subtype(
+    'TbcdStr',
+    as 'Str',
+    message {
+        sprintf( '%s is not a valid TBCD Str', np $_);
+    }
+);
+
+coerce(
+    'TbcdStr',
+    from 'Str',
+    via { _interpolate $_}
+);
+
+# TbcdNonEmptyStr
+subtype(
+    'TbcdNonEmptyStr',
+    as 'Str',
+    where { length($_) > 0 },
+    message {
+        sprintf( '%s is not a valid TBCD NonEmptyStr', np $_);
+    }
+);
+
+coerce(
+    'TbcdNonEmptyStr',
+    from 'Str',
+    via { _interpolate $_}
+);
+
+# TbcdRegexpRef
+subtype(
+    'TbcdRegexpRef',
+    as 'RegexpRef',
+    message {
+        sprintf( '%s is not a valid TBCD RegexpRef', np $_);
+    }
+);
+
+coerce(
+    'TbcdRegexpRef',
+    from 'Str',
+    via {
+        my $value = _interpolate $_;
+
+        try {
+            qr/$value/;    ## no critic [RegularExpressions::RequireExtendedFormatting]
+        }
+        catch {
+            return $value;
+        };
+    }
+);
+
 my $validator_i = validation_for(
     params => [
 
         # value integer
-        { type => TbcdInt },
+        { type => find_type_constraint('TbcdInt') },
     ]
 );
 
@@ -114,7 +210,7 @@ my $validator_n = validation_for(
     params => [
 
         # name
-        { type => TbcdNonEmptyStr },
+        { type => find_type_constraint('TbcdNonEmptyStr') },
     ]
 );
 
@@ -126,7 +222,7 @@ my $validator_s = validation_for(
     params => [
 
         # value string
-        { type => TbcdStr },
+        { type => find_type_constraint('TbcdStr') },
     ]
 );
 
@@ -138,7 +234,7 @@ my $validator_r = validation_for(
     params => [
 
         # value regexp
-        { type => TbcdRegexpRef }
+        { type => find_type_constraint('TbcdRegexpRef') }
     ]
 );
 
@@ -150,10 +246,10 @@ my $validator_ni = validation_for(
     params => [
 
         # name
-        { type => TbcdNonEmptyStr },
+        { type => find_type_constraint('TbcdNonEmptyStr') },
 
         # value int
-        { type => TbcdInt },
+        { type => find_type_constraint('TbcdInt') },
     ]
 );
 
@@ -165,10 +261,10 @@ my $validator_ns = validation_for(
     params => [
 
         # name
-        { type => TbcdNonEmptyStr },
+        { type => find_type_constraint('TbcdNonEmptyStr') },
 
         # value string
-        { type => TbcdStr }
+        { type => find_type_constraint('TbcdStr') }
     ]
 );
 
@@ -180,10 +276,10 @@ my $validator_nn = validation_for(
     params => [
 
         # value non empty string
-        { type => TbcdNonEmptyStr },
+        { type => find_type_constraint('TbcdNonEmptyStr') },
 
         # value non empty string
-        { type => TbcdNonEmptyStr },
+        { type => find_type_constraint('TbcdNonEmptyStr') },
     ]
 );
 
@@ -195,10 +291,10 @@ my $validator_nr = validation_for(
     params => [
 
         # name
-        { type => TbcdNonEmptyStr },
+        { type => find_type_constraint('TbcdNonEmptyStr') },
 
         # value regexp
-        { type => TbcdRegexpRef }
+        { type => find_type_constraint('TbcdRegexpRef') }
     ]
 );
 
