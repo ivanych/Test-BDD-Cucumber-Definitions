@@ -80,6 +80,21 @@ sub import {
         Var->scenario_var_random( $1, $2 );
         };
 
+=pod
+
+Создание переменной с элементом структуры данных:
+
+    Given переменной сценария "user" присвоен элемент структуры данных "$.user"
+
+=cut
+
+    #        var scenario var "(.+?)" struct "(.*)"
+    Given
+        qr/переменной сценария "(.+?)" присвоен элемент структуры данных "(.*)"/,
+        sub {
+        Var->scenario_var_struct( $1, $2 );
+        };
+
     return;
 }
 

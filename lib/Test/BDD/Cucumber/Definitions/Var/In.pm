@@ -25,6 +25,11 @@ sub import {
         Var->scenario_var_random( $1, $2 );
     };
 
+    #        var scenario var "(.+?)" struct "(.*)"
+    Given qr/var scenario var "(.+?)" struct "(.*)"/, sub {
+        Var->scenario_var_struct( $1, $2 );
+    };
+
     return;
 }
 

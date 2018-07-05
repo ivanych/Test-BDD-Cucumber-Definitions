@@ -44,6 +44,19 @@ sub scenario_var_random {
     return 1;
 }
 
+sub scenario_var_struct {
+    my $self = shift;
+    my ( $name, $jsonpath ) = validator_ns->(@_);
+
+    S->{Var} = __PACKAGE__;
+
+    my $value = S->{Struct}->data_element($jsonpath);
+
+    S->{_Var}->{scenario}->{vars}->{$name} = $value;
+
+    return 1;
+}
+
 sub scenario {
     my $self = shift;
     my ($name) = validator_n->(@_);
